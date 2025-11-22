@@ -1,0 +1,475 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.75;
+    color: #1a1a1a;
+    background-color: #fff;
+    font-size: 20px;
+}
+
+/* Navigation */
+.navbar {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1.5rem 0;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+    letter-spacing: 0.03em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #333;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+}
+
+/* Landing Page Styles */
+.hero {
+    margin-bottom: 6rem;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #d0d0d0 0%, #a8a8a8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.intro-section {
+    width: 100%;
+}
+
+.intro-text {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+}
+
+/* Section Styles */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #333;
+    letter-spacing: 0.02em;
+}
+
+.experience-overview,
+.education-section,
+.interests-section,
+.expertise-section {
+    margin-bottom: 5rem;
+}
+
+.experience-content,
+.education-content,
+.interests-content {
+    width: 100%;
+}
+
+.experience-content p,
+.education-content p,
+.interests-content p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Expertise Grid */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.expertise-item h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.expertise-item p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* Resume Page Styles */
+.resume-page {
+    max-width: 900px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.resume-section {
+    margin-bottom: 4rem;
+}
+
+.resume-section-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #333;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.resume-item {
+    margin-bottom: 3rem;
+}
+
+.resume-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+}
+
+.resume-item-header h3 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #999;
+    white-space: nowrap;
+}
+
+.resume-item-org {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.resume-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.resume-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    line-height: 1.75;
+    color: #1a1a1a;
+    font-size: 1rem;
+}
+
+.resume-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #999;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+}
+
+.skill-category h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.skill-category .resume-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+}
+
+.platforms-list li {
+    padding-left: 0;
+    margin-bottom: 1rem;
+}
+
+.platforms-list li:before {
+    content: none;
+}
+
+/* Portfolio Page Styles */
+.portfolio-page {
+    max-width: 900px;
+}
+
+.portfolio-section {
+    margin-bottom: 5rem;
+}
+
+.project-featured {
+    margin-bottom: 4rem;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.project-meta {
+    font-size: 0.95rem;
+    color: #999;
+    margin-bottom: 2rem;
+}
+
+.project-subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.project-description {
+    margin-bottom: 2rem;
+}
+
+.project-description p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.project-component {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: #fafafa;
+    border-left: 3px solid #e0e0e0;
+}
+
+.project-component h4 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.project-component p {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: #2a2a2a;
+    margin-bottom: 1.5rem;
+}
+
+.tech-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.portfolio-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.portfolio-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    line-height: 1.75;
+    color: #1a1a1a;
+    font-size: 1rem;
+}
+
+.portfolio-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #999;
+}
+
+.project-item {
+    margin-bottom: 3rem;
+}
+
+.project-item h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Capabilities Grid */
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+}
+
+.capability-item {
+    padding: 1.5rem;
+    border-left: 3px solid #e0e0e0;
+}
+
+.capability-item h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.capability-item p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #666;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid #e0e0e0;
+    padding: 2rem 0;
+    margin-top: 6rem;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .container {
+        padding: 3rem 2rem;
+    }
+    
+    .intro-text,
+    .project-description p {
+        font-size: 1rem;
+    }
+    
+    .expertise-grid,
+    .skills-grid,
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .resume-item-header {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .project-component {
+        padding: 1.5rem;
+    }
+}
