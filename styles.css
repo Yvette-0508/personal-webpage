@@ -364,6 +364,96 @@ body {
     color: #333;
 }
 
+/* Blog Article Page */
+.blog-post-page {
+    max-width: 900px;
+}
+
+.blog-article-header {
+    margin-bottom: 3rem;
+}
+
+.blog-article-title {
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.blog-article-content {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.blog-article-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.blog-article-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.blog-article-content p {
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+.blog-article-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.blog-article-content li {
+    margin-bottom: 0.8rem;
+    line-height: 1.75;
+}
+
+.blog-article-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.blog-article-footer a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.blog-article-footer a:hover {
+    color: #333;
+}
+
+/* Component Link Style */
+.component-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.component-link:hover {
+    color: #666;
+}
+
+.blog-post-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.blog-post-title a:hover {
+    color: #666;
+}
+
 .portfolio-section {
     margin-bottom: 5rem;
 }

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Rebalancing: Essential for Quantamental Accuracy - Yan Pan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">YAN PAN</div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html" class="active">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container blog-post-page">
+        <article class="blog-article">
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">Agentic Rebalancing: Essential for Quantamental Accuracy</h1>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">November 26, 2024</span>
+                    <span class="blog-post-category">AI Agents</span>
+                    <span class="blog-post-category">Quantitative Finance</span>
+                </div>
+            </header>
+
+            <div class="blog-article-content">
+                <h2>The Problem: Traditional Rebalancing Falls Short</h2>
+                <p>
+                    Portfolio rebalancing has traditionally been a rule-based process—trigger at fixed intervals or when 
+                    allocations drift beyond thresholds. While simple, this approach ignores the rich context of market 
+                    conditions, news events, and cross-asset correlations that experienced fund managers intuitively 
+                    incorporate into their decisions.
+                </p>
+                <p>
+                    Managing a $10M multi-asset portfolio across equities, options, and digital assets, I found myself 
+                    constantly synthesizing information from multiple sources: earnings reports, macro indicators, 
+                    prediction markets, and real-time sentiment. The question became: <em>could AI agents do this systematically?</em>
+                </p>
+
+                <h2>What is Agentic Rebalancing?</h2>
+                <p>
+                    Agentic rebalancing combines the reasoning capabilities of Large Language Models (LLMs) with 
+                    quantitative portfolio optimization. Unlike traditional rule-based systems, agentic systems can:
+                </p>
+                <ul>
+                    <li><strong>Reason about context:</strong> Understand why a rebalance might be needed, not just that thresholds were breached</li>
+                    <li><strong>Synthesize multiple data sources:</strong> Combine fundamental analysis, technical signals, and alternative data</li>
+                    <li><strong>Adapt dynamically:</strong> Adjust strategy based on market regime without manual intervention</li>
+                    <li><strong>Execute autonomously:</strong> Interface directly with brokers via APIs and MCP protocols</li>
+                </ul>
+
+                <h2>The Architecture</h2>
+                <p>
+                    I built the system using a multi-agent architecture with specialized components:
+                </p>
+
+                <h3>1. Market Intelligence Agent</h3>
+                <p>
+                    Powered by <strong>Exa DeepSearch</strong>, this agent continuously monitors and synthesizes market 
+                    intelligence. It tracks AI ecosystem developments (OpenAI, Anthropic, open-source models), sector 
+                    rotations, and macro trends relevant to our holdings.
+                </p>
+
+                <h3>2. Prediction Market Agent</h3>
+                <p>
+                    Integrates with <strong>Kalshi</strong> and <strong>Polymarket MCPs</strong> to extract implied 
+                    probabilities for key events—Fed rate decisions, election outcomes, regulatory changes. These 
+                    probability-weighted scenarios feed directly into portfolio optimization.
+                </p>
+
+                <h3>3. Quantamental Analysis Agent</h3>
+                <p>
+                    Combines quantitative signals (momentum, value, volatility) with fundamental research. Uses LLMs 
+                    (<strong>Qwen 3 Max</strong>, <strong>DeepSeek</strong>, <strong>GPT-4/5</strong>) to interpret 
+                    earnings calls, SEC filings, and management commentary in the context of our positions.
+                </p>
+
+                <h3>4. Execution Agent</h3>
+                <p>
+                    Connected to <strong>Alpaca MCP</strong> for automated trade execution. Implements optimization 
+                    algorithms for order sizing, considers transaction costs, and manages position limits.
+                </p>
+
+                <h2>Key Design Decisions</h2>
+                
+                <h3>MCP-First Architecture</h3>
+                <p>
+                    The Model Context Protocol (MCP) was crucial for clean integration. Each data source and broker 
+                    connection is abstracted behind MCP servers, allowing the core reasoning agents to remain 
+                    broker-agnostic and data-source flexible.
+                </p>
+
+                <h3>Human-in-the-Loop for High-Impact Decisions</h3>
+                <p>
+                    While the system can execute autonomously for routine rebalances, large position changes or 
+                    unusual market conditions trigger human review. The agent presents its reasoning chain and 
+                    recommended actions for approval.
+                </p>
+
+                <h3>Quantamental > Pure Quant</h3>
+                <p>
+                    Pure quantitative strategies miss nuance. Pure fundamental analysis doesn't scale. The 
+                    "quantamental" approach—using quant signals as a starting point and LLMs for contextual 
+                    refinement—has proven most effective for our strategy.
+                </p>
+
+                <h2>Results and Learnings</h2>
+                <p>
+                    Since deploying the agentic rebalancing system:
+                </p>
+                <ul>
+                    <li>Reduced time spent on manual research by ~60%</li>
+                    <li>Improved consistency in applying investment thesis across market conditions</li>
+                    <li>Better risk-adjusted returns through faster adaptation to regime changes</li>
+                    <li>Created systematic documentation of every investment decision and its rationale</li>
+                </ul>
+
+                <h2>What's Next</h2>
+                <p>
+                    I'm currently working on integrating fine-tuned models specifically trained on options pricing 
+                    and hedging strategies. The goal is to bring the same agentic approach to derivative position 
+                    management—a more complex domain that benefits even more from contextual reasoning.
+                </p>
+
+                <div class="blog-article-footer">
+                    <p><a href="portfolio.html">← Back to Portfolio</a></p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
+            <p class="contact-email"><a href="mailto:yvette@zentraders.xyz">yvette@zentraders.xyz</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+
