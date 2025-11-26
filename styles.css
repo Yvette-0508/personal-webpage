@@ -454,6 +454,55 @@ body {
     color: #666;
 }
 
+/* Code blocks for blog posts */
+.code-block {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+/* Tables for blog posts */
+.tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.tech-table th,
+.tech-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tech-table th {
+    background-color: #f5f5f5;
+    font-weight: 700;
+    color: #333;
+}
+
+.tech-table td code {
+    background-color: #f5f5f5;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.blog-article-content code {
+    background-color: #f5f5f5;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.95em;
+}
+
 .portfolio-section {
     margin-bottom: 5rem;
 }

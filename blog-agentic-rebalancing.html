@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agentic Rebalancing: Essential for Quantamental Accuracy - Yan Pan</title>
+    <title>Building a Quantamental Agent - Yan Pan</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,112 +22,318 @@
     <main class="container blog-post-page">
         <article class="blog-article">
             <header class="blog-article-header">
-                <h1 class="blog-article-title">Agentic Rebalancing: Essential for Quantamental Accuracy</h1>
+                <h1 class="blog-article-title">Building a Quantamental Agent: Voyage AI, Exa Search, and DeepSeek</h1>
                 <div class="blog-post-meta">
                     <span class="blog-post-date">November 26, 2024</span>
                     <span class="blog-post-category">AI Agents</span>
                     <span class="blog-post-category">Quantitative Finance</span>
+                    <span class="blog-post-category">RAG</span>
                 </div>
             </header>
 
             <div class="blog-article-content">
-                <h2>The Problem: Traditional Rebalancing Falls Short</h2>
+                <h2>The Problem: Information Overload in Investment Research</h2>
                 <p>
-                    Portfolio rebalancing has traditionally been a rule-based process—trigger at fixed intervals or when 
-                    allocations drift beyond thresholds. While simple, this approach ignores the rich context of market 
-                    conditions, news events, and cross-asset correlations that experienced fund managers intuitively 
-                    incorporate into their decisions.
+                    As a quantamental investor managing a multi-asset portfolio, I constantly synthesize information 
+                    from disparate sources: proprietary research notes, SEC filings, earnings transcripts, real-time 
+                    market news, and sector analysis. The challenge isn't finding information—it's finding the 
+                    <em>right</em> information at the <em>right</em> time and reasoning about it coherently.
                 </p>
                 <p>
-                    Managing a $10M multi-asset portfolio across equities, options, and digital assets, I found myself 
-                    constantly synthesizing information from multiple sources: earnings reports, macro indicators, 
-                    prediction markets, and real-time sentiment. The question became: <em>could AI agents do this systematically?</em>
-                </p>
-
-                <h2>What is Agentic Rebalancing?</h2>
-                <p>
-                    Agentic rebalancing combines the reasoning capabilities of Large Language Models (LLMs) with 
-                    quantitative portfolio optimization. Unlike traditional rule-based systems, agentic systems can:
+                    Traditional search fails here. Keyword matching misses semantic intent. Manual research doesn't 
+                    scale. I needed a system that could:
                 </p>
                 <ul>
-                    <li><strong>Reason about context:</strong> Understand why a rebalance might be needed, not just that thresholds were breached</li>
-                    <li><strong>Synthesize multiple data sources:</strong> Combine fundamental analysis, technical signals, and alternative data</li>
-                    <li><strong>Adapt dynamically:</strong> Adjust strategy based on market regime without manual intervention</li>
-                    <li><strong>Execute autonomously:</strong> Interface directly with brokers via APIs and MCP protocols</li>
+                    <li><strong>Store and retrieve</strong> my proprietary research semantically</li>
+                    <li><strong>Augment</strong> with real-time web intelligence</li>
+                    <li><strong>Reason</strong> across both sources to generate actionable insights</li>
                 </ul>
 
-                <h2>The Architecture</h2>
+                <h2>The Solution: A Quantamental RAG Agent</h2>
                 <p>
-                    I built the system using a multi-agent architecture with specialized components:
+                    I built a retrieval-augmented generation (RAG) agent that combines three best-in-class components:
                 </p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Technology</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Embeddings</strong></td>
+                            <td>Voyage AI <code>voyage-3-large</code></td>
+                            <td>Semantic understanding of financial text</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vector Store</strong></td>
+                            <td>Qdrant</td>
+                            <td>Fast retrieval of internal documents</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Web Search</strong></td>
+                            <td>Exa</td>
+                            <td>Real-time market intelligence</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LLM</strong></td>
+                            <td>DeepSeek v3.2</td>
+                            <td>Contextual reasoning and synthesis</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                <h3>1. Market Intelligence Agent</h3>
-                <p>
-                    Powered by <strong>Exa DeepSearch</strong>, this agent continuously monitors and synthesizes market 
-                    intelligence. It tracks AI ecosystem developments (OpenAI, Anthropic, open-source models), sector 
-                    rotations, and macro trends relevant to our holdings.
-                </p>
+                <h2>Architecture</h2>
+<pre class="code-block">
+┌─────────────────────────────────────────────────────────────┐
+│                    Quantamental Agent                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Question: "What are the risks in AI chip stocks?"           │
+│       │                                                      │
+│       ├──► Voyage AI ──► Qdrant (Internal Docs)              │
+│       │         │              │                             │
+│       │         │              ▼                             │
+│       │         │    "Our Q3 analysis noted supply           │
+│       │         │     chain constraints in TSMC..."          │
+│       │         │                                            │
+│       └──► Exa Search (Web) ─────┐                           │
+│                    │             │                           │
+│                    ▼             │                           │
+│         "Reuters: NVIDIA faces    │                          │
+│          export restrictions..."  │                          │
+│                                  │                           │
+│                    ┌─────────────┘                           │
+│                    ▼                                         │
+│              Combined Context                                │
+│                    │                                         │
+│                    ▼                                         │
+│              DeepSeek v3.2                                   │
+│                    │                                         │
+│                    ▼                                         │
+│         Synthesized Answer + Sources                         │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+</pre>
 
-                <h3>2. Prediction Market Agent</h3>
-                <p>
-                    Integrates with <strong>Kalshi</strong> and <strong>Polymarket MCPs</strong> to extract implied 
-                    probabilities for key events—Fed rate decisions, election outcomes, regulatory changes. These 
-                    probability-weighted scenarios feed directly into portfolio optimization.
-                </p>
+                <h2>Why These Components?</h2>
 
-                <h3>3. Quantamental Analysis Agent</h3>
+                <h3>Voyage AI <code>voyage-3-large</code></h3>
                 <p>
-                    Combines quantitative signals (momentum, value, volatility) with fundamental research. Uses LLMs 
-                    (<strong>Qwen 3 Max</strong>, <strong>DeepSeek</strong>, <strong>GPT-4/5</strong>) to interpret 
-                    earnings calls, SEC filings, and management commentary in the context of our positions.
+                    Voyage's embedding model excels at financial and technical text. With 1024 dimensions and 
+                    specialized training, it captures nuanced semantic relationships that general-purpose embeddings 
+                    miss. Critically, it supports separate <code>document</code> and <code>query</code> input types 
+                    for asymmetric retrieval—essential when your queries are questions but your corpus is research reports.
                 </p>
+<pre class="code-block">
+from services.embedding import EmbeddingService
 
-                <h3>4. Execution Agent</h3>
-                <p>
-                    Connected to <strong>Alpaca MCP</strong> for automated trade execution. Implements optimization 
-                    algorithms for order sizing, considers transaction costs, and manages position limits.
-                </p>
+embedding_service = EmbeddingService(settings)
 
-                <h2>Key Design Decisions</h2>
-                
-                <h3>MCP-First Architecture</h3>
-                <p>
-                    The Model Context Protocol (MCP) was crucial for clean integration. Each data source and broker 
-                    connection is abstracted behind MCP servers, allowing the core reasoning agents to remain 
-                    broker-agnostic and data-source flexible.
-                </p>
+# Embed documents for storage
+doc_vectors = embedding_service.embed_documents([
+    "TechCorp Q3: Revenue $15.2B, cloud grew 45%...",
+    "Semiconductor sector faces inventory buildup..."
+])
 
-                <h3>Human-in-the-Loop for High-Impact Decisions</h3>
-                <p>
-                    While the system can execute autonomously for routine rebalances, large position changes or 
-                    unusual market conditions trigger human review. The agent presents its reasoning chain and 
-                    recommended actions for approval.
-                </p>
+# Embed query for search (different optimization)
+query_vector = embedding_service.embed_query(
+    "What are the cloud growth trends?"
+)
+</pre>
 
-                <h3>Quantamental > Pure Quant</h3>
+                <h3>Qdrant for Internal Knowledge</h3>
                 <p>
-                    Pure quantitative strategies miss nuance. Pure fundamental analysis doesn't scale. The 
-                    "quantamental" approach—using quant signals as a starting point and LLMs for contextual 
-                    refinement—has proven most effective for our strategy.
+                    Qdrant provides sub-millisecond vector search with rich filtering. I store all proprietary 
+                    research—earnings analyses, sector notes, investment theses—with metadata for filtering by 
+                    ticker, date, or document type.
                 </p>
+<pre class="code-block">
+from services.vector_store import VectorStoreService
 
-                <h2>Results and Learnings</h2>
+vector_store = VectorStoreService(settings, embedding_service)
+
+# Index internal research
+vector_store.add_document(
+    content="NVDA positioned to capture 80% of AI accelerator market...",
+    metadata={
+        "title": "NVIDIA Investment Thesis",
+        "ticker": "NVDA",
+        "date": "2024-10-15",
+        "type": "investment_thesis"
+    }
+)
+
+# Semantic search
+docs = vector_store.search(
+    query="AI chip market share leaders",
+    top_k=5
+)
+</pre>
+
+                <h3>Exa for Real-Time Web Intelligence</h3>
                 <p>
-                    Since deploying the agentic rebalancing system:
+                    Exa's neural search understands intent, not just keywords. When I ask about "Fed rate decision 
+                    implications," it finds analysis pieces, not just articles mentioning those words. The financial 
+                    domain filtering ensures I get Reuters, Bloomberg, and SEC filings—not Reddit speculation.
                 </p>
+<pre class="code-block">
+from services.exa_search import ExaSearchService
+
+exa = ExaSearchService(settings)
+
+# Financial-focused search
+results = exa.search_financial(
+    query="semiconductor inventory cycle 2024",
+    num_results=5
+)
+
+# Research paper search
+papers = exa.search_research(
+    query="transformer models in quantitative finance"
+)
+</pre>
+
+                <h3>DeepSeek v3.2 for Reasoning</h3>
+                <p>
+                    DeepSeek offers GPT-4 class reasoning at a fraction of the cost. For a system making dozens of 
+                    queries daily, this matters. The model excels at synthesizing multiple sources and maintaining 
+                    analytical rigor—exactly what quantamental research demands.
+                </p>
+<pre class="code-block">
+from services.llm import LLMService
+
+llm = LLMService(settings)
+
+response = llm.answer_with_context(
+    question="How do current chip valuations compare to historical cycles?",
+    context=combined_context,  # Internal + web sources
+)
+</pre>
+
+                <h2>Three Search Modes</h2>
+                <p>The agent supports three retrieval strategies:</p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Sources</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>INTERNAL_ONLY</code></td>
+                            <td>Qdrant</td>
+                            <td>"What did our Q3 thesis say about AAPL?"</td>
+                        </tr>
+                        <tr>
+                            <td><code>WEB_ONLY</code></td>
+                            <td>Exa</td>
+                            <td>"What's the latest Fed decision?"</td>
+                        </tr>
+                        <tr>
+                            <td><code>HYBRID</code></td>
+                            <td>Both</td>
+                            <td>"How does our view compare to market consensus?"</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+<pre class="code-block">
+from agent import QuantamentalAgent, SearchMode
+
+agent = QuantamentalAgent()
+
+# Hybrid search: internal + web
+response = agent.ask(
+    question="What are the risks in AI chip stocks given current valuations?",
+    mode=SearchMode.HYBRID,
+    top_k_internal=5,
+    top_k_web=5,
+    financial_focus=True
+)
+
+print(response.answer)
+print(response.get_sources_summary())
+</pre>
+
+                <h2>Implementation Details</h2>
+
+                <h3>Project Structure</h3>
+<pre class="code-block">
+semantic-search/
+├── agent.py              # Main orchestrator
+├── cli.py                # Interactive CLI
+├── config.py             # Environment configuration
+├── services/
+│   ├── embedding.py      # Voyage AI integration
+│   ├── exa_search.py     # Exa web search
+│   ├── vector_store.py   # Qdrant operations
+│   └── llm.py            # DeepSeek interface
+└── examples/
+    ├── basic_usage.py
+    └── advanced_usage.py
+</pre>
+
+                <h3>Configuration</h3>
+<pre class="code-block">
+# .env
+VOYAGE_API_KEY=your_key
+EXA_API_KEY=your_key
+DEEPSEEK_API_KEY=your_key
+QDRANT_URL=http://localhost:6333
+
+EMBEDDING_MODEL=voyage-3-large
+LLM_MODEL=deepseek-chat
+</pre>
+
+                <h3>CLI Usage</h3>
+<pre class="code-block">
+# Interactive chat with mode switching
+python cli.py chat
+
+# Single question
+python cli.py ask "Semiconductor outlook for 2025" --mode hybrid
+
+# Index your research folder
+python cli.py index ./research --recursive
+
+# Search without generating answer
+python cli.py search "NVIDIA earnings" --source both
+</pre>
+
+                <h2>Results</h2>
+                <p>Since deploying this system:</p>
                 <ul>
-                    <li>Reduced time spent on manual research by ~60%</li>
-                    <li>Improved consistency in applying investment thesis across market conditions</li>
-                    <li>Better risk-adjusted returns through faster adaptation to regime changes</li>
-                    <li>Created systematic documentation of every investment decision and its rationale</li>
+                    <li><strong>Research time reduced by ~60%</strong>: The agent surfaces relevant internal notes and current market context in seconds</li>
+                    <li><strong>Consistency improved</strong>: Every analysis considers both proprietary research and real-time data</li>
+                    <li><strong>Audit trail created</strong>: Every answer includes source attribution for compliance and review</li>
+                    <li><strong>Scalable synthesis</strong>: Can process queries that would take hours of manual research</li>
                 </ul>
 
                 <h2>What's Next</h2>
                 <p>
-                    I'm currently working on integrating fine-tuned models specifically trained on options pricing 
-                    and hedging strategies. The goal is to bring the same agentic approach to derivative position 
-                    management—a more complex domain that benefits even more from contextual reasoning.
+                    This quantamental agent is one component of a larger agentic rebalancing system. Next steps include:
                 </p>
+                <ul>
+                    <li><strong>Alpaca MCP Integration</strong>: Connect to live portfolio positions for context-aware analysis</li>
+                    <li><strong>Prediction Market Signals</strong>: Integrate Kalshi/Polymarket implied probabilities</li>
+                    <li><strong>Multi-LLM Ensemble</strong>: Route queries to specialized models (DeepSeek for reasoning, Claude for analysis, GPT for structured output)</li>
+                    <li><strong>Options Strategy Module</strong>: Extend the agent to reason about derivative positions and hedging</li>
+                </ul>
+
+                <h2>Try It Yourself</h2>
+                <p>The complete implementation is available at: <code>github.com/yanpan/semantic-search</code></p>
+<pre class="code-block">
+git clone https://github.com/yanpan/semantic-search
+cd semantic-search
+pip install -r requirements.txt
+# Add your API keys to .env
+python cli.py chat
+</pre>
 
                 <div class="blog-article-footer">
                     <p><a href="portfolio.html">← Back to Portfolio</a></p>
@@ -144,4 +350,3 @@
     </footer>
 </body>
 </html>
-
