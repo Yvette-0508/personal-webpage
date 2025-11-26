@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine-tuned Models for Portfolio Hedging with Options - Yan Pan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">YAN PAN</div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html" class="active">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container blog-post-page">
+        <article class="blog-article">
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">Fine-tuned Models for Portfolio Hedging with Options</h1>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">November 26, 2024</span>
+                    <span class="blog-post-category">Options Trading</span>
+                    <span class="blog-post-category">Fine-tuning</span>
+                </div>
+            </header>
+
+            <div class="blog-article-content">
+                <h2>Why Fine-tune Models for Options Strategy?</h2>
+                <p>
+                    Options are inherently complex instruments. The interplay of strike prices, expiration dates, 
+                    implied volatility, and the Greeks (delta, gamma, vega, theta) creates a multi-dimensional 
+                    optimization problem that general-purpose LLMs struggle with out of the box.
+                </p>
+                <p>
+                    While models like GPT-4 can explain options concepts well, they often fail at practical 
+                    strategy generation—recommending strikes that don't exist, miscalculating payoff profiles, 
+                    or ignoring critical factors like bid-ask spreads and liquidity. This gap motivated my 
+                    exploration into fine-tuning models specifically for derivative strategy generation.
+                </p>
+
+                <h2>The Fine-tuning Approach</h2>
+                
+                <h3>Dataset Construction</h3>
+                <p>
+                    I built a training dataset from historical options data including:
+                </p>
+                <ul>
+                    <li><strong>Options chains:</strong> Real market data with strikes, expirations, IV, and Greeks</li>
+                    <li><strong>Portfolio positions:</strong> Underlying holdings requiring hedging</li>
+                    <li><strong>Strategy examples:</strong> Expert-annotated hedging strategies with reasoning</li>
+                    <li><strong>Outcome data:</strong> P&L results for backtesting and reward modeling</li>
+                </ul>
+
+                <h3>Supervised Fine-tuning (SFT)</h3>
+                <p>
+                    The first phase used SFT to teach the model the fundamentals:
+                </p>
+                <ul>
+                    <li>Accurate Greeks calculation from options parameters</li>
+                    <li>Volatility surface interpolation and term structure</li>
+                    <li>Strategy construction (spreads, straddles, collars, etc.)</li>
+                    <li>Position sizing based on portfolio delta/gamma targets</li>
+                </ul>
+
+                <h3>Reinforcement Learning (RL) for Optimization</h3>
+                <p>
+                    SFT alone produces competent but not optimal strategies. The RL phase optimized for:
+                </p>
+                <ul>
+                    <li><strong>Hedging effectiveness:</strong> Minimizing portfolio variance under stress scenarios</li>
+                    <li><strong>Cost efficiency:</strong> Reducing premium spent for equivalent protection</li>
+                    <li><strong>Execution feasibility:</strong> Preferring liquid strikes with tight spreads</li>
+                </ul>
+
+                <h2>Integration with Risk Infrastructure</h2>
+                <p>
+                    The fine-tuned model doesn't operate in isolation. It's integrated with our risk management stack:
+                </p>
+
+                <h3>VaR and Stress Testing</h3>
+                <p>
+                    Before recommending any hedge, the model queries our VaR calculator to understand 
+                    current portfolio risk. It then simulates how proposed hedges would perform under 
+                    historical stress scenarios (2008 crisis, COVID crash, rate shock events).
+                </p>
+
+                <h3>Factor Exposure Monitoring</h3>
+                <p>
+                    The system tracks exposures to key factors—market beta, sector concentrations, 
+                    volatility regime. Hedging recommendations are contextualized by which factors 
+                    are driving current risk.
+                </p>
+
+                <h3>Thinking Machine Tinker API</h3>
+                <p>
+                    For complex multi-leg strategies, I integrated with the Tinker API for advanced 
+                    reasoning. This helps with scenarios like calendar spreads across multiple 
+                    expirations or ratio spreads requiring precise delta neutrality.
+                </p>
+
+                <h2>Practical Example</h2>
+                <p>
+                    Consider a portfolio long $500K in tech stocks with concentrated NVDA exposure. 
+                    The fine-tuned model might recommend:
+                </p>
+                <ul>
+                    <li>Buy NVDA 30-delta puts, 45 DTE, sized to achieve 0.3 portfolio delta reduction</li>
+                    <li>Partially finance with covered calls at 0.2 delta, reducing net premium by 40%</li>
+                    <li>Add QQQ put spread as sector hedge for tail risk beyond single-stock exposure</li>
+                </ul>
+                <p>
+                    Each recommendation comes with Greeks impact, cost breakdown, and scenario analysis 
+                    showing P&L under ±10%, ±20% moves in the underlying.
+                </p>
+
+                <h2>Challenges and Learnings</h2>
+                
+                <h3>Data Quality Matters Most</h3>
+                <p>
+                    The biggest improvements came from better training data, not model architecture changes. 
+                    Clean, well-annotated examples of expert reasoning were more valuable than volume.
+                </p>
+
+                <h3>Greeks Precision is Critical</h3>
+                <p>
+                    Small errors in Greeks calculations compound into poor hedging recommendations. 
+                    The model needed extensive calibration on IV surface dynamics and term structure.
+                </p>
+
+                <h3>Market Regime Awareness</h3>
+                <p>
+                    Strategies optimal in low-vol regimes fail in crisis periods. The model learned to 
+                    adjust recommendations based on VIX levels and realized vs. implied volatility gaps.
+                </p>
+
+                <h2>What's Next</h2>
+                <p>
+                    Current work focuses on extending the model to handle exotic options and structured 
+                    products, as well as improving real-time adaptation to intraday volatility shifts.
+                </p>
+
+                <div class="blog-article-footer">
+                    <p><a href="portfolio.html">← Back to Portfolio</a></p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
+            <p class="contact-email"><a href="mailto:yvette@zentraders.xyz">yvette@zentraders.xyz</a></p>
+        </div>
+    </footer>
+</body>
+</html>
+
