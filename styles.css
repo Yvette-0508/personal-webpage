@@ -265,6 +265,50 @@ body {
     color: #999;
 }
 
+/* Resume Summary and Subsections */
+.resume-summary {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.resume-subsection {
+    margin-bottom: 2rem;
+    padding-left: 0;
+}
+
+.resume-subsection h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+.resume-sublist {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.resume-sublist li {
+    padding-left: 1rem;
+    margin-bottom: 0.4rem;
+    position: relative;
+    line-height: 1.6;
+    color: #1a1a1a;
+    font-size: 1rem;
+}
+
+.resume-sublist li:before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #999;
+}
+
 /* Skills Grid */
 .skills-grid {
     display: grid;
