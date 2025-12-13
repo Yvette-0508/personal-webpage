@@ -68,7 +68,7 @@ body {
 
 /* Landing Page Styles */
 .hero {
-    margin-bottom: 6rem;
+    margin-bottom: 3.5rem;
 }
 
 .main-title {
@@ -99,14 +99,14 @@ body {
 .section-title {
     font-size: 1.4rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     color: #333;
     letter-spacing: 0.02em;
 }
 
 /* Portfolio Banner */
 .portfolio-banner {
-    margin-bottom: 5rem;
+    margin-bottom: 3.5rem;
     width: 100%;
     max-width: 100%;
 }
@@ -137,8 +137,9 @@ body {
 .experience-overview,
 .education-section,
 .interests-section,
+.recent-thoughts-section,
 .expertise-section {
-    margin-bottom: 5rem;
+    margin-bottom: 3.5rem;
 }
 
 .experience-content,
@@ -149,11 +150,12 @@ body {
 
 .experience-content p,
 .education-content p,
-.interests-content p {
+.interests-content p,
+.recent-thoughts-content p {
     font-size: 1.15rem;
     line-height: 1.75;
     color: #1a1a1a;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.1rem;
 }
 
 .highlight {
