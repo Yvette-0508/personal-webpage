@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Voice-Driven Real-Time Video Generation Projector - Yan Pan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">YAN PAN</div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html" class="active">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container blog-post-page">
+        <article class="blog-article">
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">Building a Voice-Driven Real-Time Video Generation Projector</h1>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">December 12, 2025</span>
+                    <span class="blog-post-category">Multimodality</span>
+                    <span class="blog-post-category">Generative Video</span>
+                    <span class="blog-post-category">Real-time Systems</span>
+                </div>
+            </header>
+
+            <div class="blog-article-content">
+                <img src="images/voice-driven-projector.png" alt="Voice-driven real-time video generation projector concept" class="blog-hero-image">
+
+                <h2>Motivation</h2>
+                <p>
+                    I love sci-fi and film, but imagining a scene purely from audio can be surprisingly hard—especially when the story is told
+                    quickly or in a non-native language setting. This project is my attempt to make “spoken stories” instantly visual: you talk,
+                    and a projector plays a cinematic sequence in near real time.
+                </p>
+
+                <h2>The Product Goal</h2>
+                <p>
+                    The hardest constraint is latency. If the system takes 2–3 minutes to respond, it stops feeling like a projector and starts
+                    feeling like offline generation. The goal is to keep the loop interactive:
+                </p>
+                <ul>
+                    <li><strong>Streaming input:</strong> mic audio captured continuously</li>
+                    <li><strong>Fast understanding:</strong> incremental ASR + lightweight scene parsing</li>
+                    <li><strong>Stable visuals:</strong> avoid style/identity drift while the story evolves</li>
+                    <li><strong>Projector-ready output:</strong> consistent resolution, frame pacing, and audio-video sync</li>
+                </ul>
+
+                <h2>System Architecture</h2>
+<pre class="code-block">
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          Voice → Video Projector                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│ Mic → VAD → Streaming ASR → Scene Planner (LLM) → Shot List               │
+│                         │                         │                       │
+│                         │                         ├─► Visual Spec (style) │
+│                         │                         └─► Timing (beats)      │
+│                         ▼                                                 │
+│                 Context Store (characters / locations / props)            │
+│                         │                                                 │
+│                         ▼                                                 │
+│               Keyframes (image gen) → Motion (video gen)                  │
+│                         │                                                 │
+│                         ▼                                                 │
+│             Post-process (upscale, color, fps, captions)                  │
+│                         │                                                 │
+│                         ▼                                                 │
+│                     Render Loop → Projector Output                        │
+└──────────────────────────────────────────────────────────────────────────┘
+</pre>
+
+                <h2>Key Design Choices</h2>
+
+                <h3>1) Streaming ASR + VAD</h3>
+                <p>
+                    Voice input is segmented with VAD (voice activity detection) so the system can react to “beats” rather than waiting for a full
+                    paragraph. The ASR layer emits partial transcripts; I treat these as tentative and replan when a segment stabilizes.
+                </p>
+
+                <h3>2) Scene Planning: from transcript to shots</h3>
+                <p>
+                    The LLM’s job isn’t to write prose—it’s to produce a constrained shot plan that downstream models can execute:
+                </p>
+                <ul>
+                    <li><strong>Shot type:</strong> wide / medium / close-up</li>
+                    <li><strong>Subject:</strong> character + attributes (clothing, mood)</li>
+                    <li><strong>Environment:</strong> location, time, lighting</li>
+                    <li><strong>Action:</strong> what changes across frames</li>
+                    <li><strong>Camera:</strong> pan / dolly / handheld feel</li>
+                    <li><strong>Duration:</strong> seconds and transition style</li>
+                </ul>
+
+                <h3>3) Keyframes first, motion second</h3>
+                <p>
+                    The pipeline is more stable when it generates strong keyframes (a few anchor images) and then animates between them.
+                    Keyframes reduce identity drift and give the motion model a clear target.
+                </p>
+
+                <h3>4) A projector is a display system, not a batch renderer</h3>
+                <p>
+                    A real-time projector needs predictable frame pacing. I run a render loop that always has something to display:
+                    if the next clip isn’t ready, it can loop the last shot, crossfade, or show an in-universe “loading” cut.
+                </p>
+
+                <h2>Latency Budget (Practical)</h2>
+                <p>
+                    The real trick is scheduling. Generation is spiky: one slow step can stall the whole UX.
+                    I treat each stage as a queue and keep a small buffer of upcoming shots.
+                </p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>What it does</th>
+                            <th>Latency target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>VAD + ASR</strong></td>
+                            <td>Partial + stabilized transcript</td>
+                            <td>0.2–1.0s</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Scene planning</strong></td>
+                            <td>Transcript → shot plan JSON</td>
+                            <td>0.3–1.5s</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Keyframes</strong></td>
+                            <td>Shot → anchor images</td>
+                            <td>1–5s</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Motion</strong></td>
+                            <td>Animate to short video clips</td>
+                            <td>3–15s</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Post-process</strong></td>
+                            <td>Upscale / fps / color / captions</td>
+                            <td>0.5–3s</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Implementation Notes</h2>
+                <p>
+                    This is the kind of system where “glue code” matters more than any single model. The system needs:
+                    state management (characters + style), retries, caching, and graceful degradation.
+                </p>
+<pre class="code-block">
+# Pseudo-loop
+# - always keep a few seconds buffered for the projector
+# - treat every stage as streaming / incremental
+
+while running:
+    audio_chunk = mic.read()
+    vad_events = vad.update(audio_chunk)
+    asr_partial, asr_final = asr.update(audio_chunk)
+
+    if asr_final:
+        shots = planner.plan(asr_final, state=context)
+        keyframe_queue.enqueue(shots)
+
+    keyframes = keyframe_worker.try_generate(keyframe_queue)
+    clips = motion_worker.try_generate(keyframes)
+    ready_frames = postprocess.try_finalize(clips)
+
+    projector.render(ready_frames or fallback_frames)
+</pre>
+
+                <h2>What’s Next</h2>
+                <ul>
+                    <li><strong>Better continuity:</strong> longer-term memory for character identity and locations</li>
+                    <li><strong>Interactive edits:</strong> “make it darker”, “change camera angle”, “slow down”</li>
+                    <li><strong>Audio-to-action alignment:</strong> synchronize motion beats to speech rhythm</li>
+                    <li><strong>Reliability:</strong> robust failure recovery so the projector never freezes</li>
+                </ul>
+
+                <div class="blog-article-footer">
+                    <p><a href="blog.html">← Back to Blog</a></p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
+            <p class="contact-email"><a href="mailto:yvette@zentraders.xyz">yvette@zentraders.xyz</a></p>
+        </div>
+    </footer>
+</body>
+</html>

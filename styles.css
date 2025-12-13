@@ -453,6 +453,17 @@ body {
     color: #1a1a1a;
 }
 
+.blog-hero-image {
+    width: 100%;
+    max-width: 900px;
+    height: 260px;
+    display: block;
+    margin: 0 auto 2rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    object-fit: cover;
+}
+
 .blog-article-content ul {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
@@ -753,6 +764,11 @@ body {
     .resume-item-header {
         flex-direction: column;
         gap: 0.3rem;
+    }
+
+    .blog-hero-image {
+        height: 170px;
+        margin-bottom: 1.5rem;
     }
 }
 
