@@ -456,9 +456,9 @@ body {
 .blog-hero-image {
     width: 100%;
     max-width: 900px;
-    height: 260px;
+    height: 200px;
     display: block;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1.5rem;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     object-fit: cover;
@@ -767,8 +767,8 @@ body {
     }
 
     .blog-hero-image {
-        height: 170px;
-        margin-bottom: 1.5rem;
+        height: 130px;
+        margin-bottom: 1.25rem;
     }
 }
 
