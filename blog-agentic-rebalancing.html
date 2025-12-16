@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building a Quantamental Agent - Yan Pan</title>
+    <title>Building a Financial Research Agent: Graph + RAG + Continuous Evaluation - Yan Pan</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,6 +15,7 @@
                 <a href="resume.html">Resume</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="blog.html" class="active">Blog</a>
+                <a href="reading.html">Reading</a>
             </div>
         </div>
     </nav>
@@ -22,7 +23,7 @@
     <main class="container blog-post-page">
         <article class="blog-article">
             <header class="blog-article-header">
-                <h1 class="blog-article-title">Building a Quantamental Agent: Voyage AI, Exa Search, and DeepSeek</h1>
+                <h1 class="blog-article-title">Building a Financial Research Agent: Graph + RAG + Continuous Evaluation</h1>
                 <div class="blog-post-meta">
                     <span class="blog-post-date">November 26, 2024</span>
                     <span class="blog-post-category">AI Agents</span>
@@ -49,294 +50,321 @@
                     <li><strong>Reason</strong> across both sources to generate actionable insights</li>
                 </ul>
 
-                <h2>The Solution: A Quantamental RAG Agent</h2>
+                <h2>The Solution: A Financial Research Agent (Modular Stack)</h2>
                 <p>
-                    I built a retrieval-augmented generation (RAG) agent that combines three best-in-class components:
+                    The core idea is stable (tool-augmented retrieval + grounded synthesis), but the <em>stack evolves</em> as providers change.
+                    In the current codebase, the agent is a tool-calling loop with context management, backed by multiple stores (SQL + graph + vectors + cache)
+                    and a continuous evaluation suite that prevents silent regressions.
                 </p>
                 <table class="tech-table">
                     <thead>
                         <tr>
                             <th>Component</th>
-                            <th>Technology</th>
+                            <th>Implementation</th>
                             <th>Purpose</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td><strong>LLM runtime</strong></td>
+                            <td>LiteLLM (OpenAI-compatible tool calling)</td>
+                            <td>Reasoning + tool orchestration</td>
+                        </tr>
+                        <tr>
                             <td><strong>Embeddings</strong></td>
-                            <td>Voyage AI <code>voyage-3-large</code></td>
-                            <td>Semantic understanding of financial text</td>
+                            <td>Voyage AI finance embeddings (e.g., <code>voyage-finance-2</code>)</td>
+                            <td>Semantic retrieval over filings and extracted report chunks</td>
                         </tr>
                         <tr>
-                            <td><strong>Vector Store</strong></td>
-                            <td>Qdrant</td>
-                            <td>Fast retrieval of internal documents</td>
+                            <td><strong>Vector store</strong></td>
+                            <td>Qdrant (vector search + metadata filters)</td>
+                            <td>Fast retrieval with company/report/section/period filtering</td>
                         </tr>
                         <tr>
-                            <td><strong>Web Search</strong></td>
-                            <td>Exa</td>
-                            <td>Real-time market intelligence</td>
+                            <td><strong>Web intelligence</strong></td>
+                            <td>Exa (domain-filtered news / research / filings)</td>
+                            <td>Fresh context: news, SEC filings, research</td>
                         </tr>
                         <tr>
-                            <td><strong>LLM</strong></td>
-                            <td>DeepSeek v3.2</td>
-                            <td>Contextual reasoning and synthesis</td>
+                            <td><strong>Knowledge graph</strong></td>
+                            <td>Neo4j (supply-chain graph)</td>
+                            <td>Structured dependency queries and impact analysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relational store</strong></td>
+                            <td>Postgres (portfolio / positions)</td>
+                            <td>Portfolio state and risk inputs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cache</strong></td>
+                            <td>Redis (tool result caching)</td>
+                            <td>Lower latency and more stable unit economics</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Evaluation Is the Product</h2>
+                <p>
+                    In investment workflows, a “good demo” is not success. A system is only useful if it is consistently correct, properly sourced,
+                    and stable under distribution shift. I treated evaluation as a first-class feature: every change to prompts, tools, retrieval,
+                    or model routing must move measurable metrics in the right direction.
+                </p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>What I evaluate</th>
+                            <th>How it fails in practice</th>
+                            <th>What I measure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tool selection</strong></td>
+                            <td>Calls the wrong tools, skips required tools, or loops</td>
+                            <td>Expected tools vs actual tool calls (overlap/Jaccard)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Entity grounding</strong></td>
+                            <td>Drifts to the wrong ticker/supplier, mixes entities</td>
+                            <td>Expected entities present; prohibited entities absent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Numeric accuracy</strong></td>
+                            <td>Wrong numbers, unit mistakes, extraction bugs</td>
+                            <td>Expected values within tolerance (robust numeric parsing)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hallucinations</strong></td>
+                            <td>Fabricated facts and confident nonsense</td>
+                            <td>Must-not-contain constraints + factual checks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Difficulty tiers</strong></td>
+                            <td>Easy QA looks fine; strategy fails under pressure</td>
+                            <td>Easy/Medium/Hard thresholds (factual → reasoning → strategy)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Latency + cost</strong></td>
+                            <td>Slow responses or unsustainable spend</td>
+                            <td>Response time + tokens per turn</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h2>Architecture</h2>
 <pre class="code-block">
-┌─────────────────────────────────────────────────────────────┐
-│                    Quantamental Agent                        │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Question: "What are the risks in AI chip stocks?"           │
-│       │                                                      │
-│       ├──► Voyage AI ──► Qdrant (Internal Docs)              │
-│       │         │              │                             │
-│       │         │              ▼                             │
-│       │         │    "Our Q3 analysis noted supply           │
-│       │         │     chain constraints in TSMC..."          │
-│       │         │                                            │
-│       └──► Exa Search (Web) ─────┐                           │
-│                    │             │                           │
-│                    ▼             │                           │
-│         "Reuters: NVIDIA faces    │                          │
-│          export restrictions..."  │                          │
-│                                  │                           │
-│                    ┌─────────────┘                           │
-│                    ▼                                         │
-│              Combined Context                                │
-│                    │                                         │
-│                    ▼                                         │
-│              DeepSeek v3.2                                   │
-│                    │                                         │
-│                    ▼                                         │
-│         Synthesized Answer + Sources                         │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                         Agent Layer                              │
+│      Router / Planner / Executor + Context Manager (tool calls)   │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────────┐
+│                          Tool Layer                              │
+│  Portfolio Tools | Supply Chain Tools | Report Tools | Exa Search │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+┌─────────────────────────────────────────────────────────────────┐
+│                         Storage Layer                             │
+│     Postgres (portfolio) | Neo4j (graph) | Qdrant (vectors)       │
+│                      Redis (cache)                                 │
+└─────────────────────────────────────────────────────────────────┘
 </pre>
 
-                <h2>Why These Components?</h2>
-
-                <h3>Voyage AI <code>voyage-3-large</code></h3>
+                <h2>Why This Design?</h2>
                 <p>
-                    Voyage's embedding model excels at financial and technical text. With 1024 dimensions and 
-                    specialized training, it captures nuanced semantic relationships that general-purpose embeddings 
-                    miss. Critically, it supports separate <code>document</code> and <code>query</code> input types 
-                    for asymmetric retrieval—essential when your queries are questions but your corpus is research reports.
+                    Vendor names are less important than the design constraints: retrieval quality, provenance/citations, latency/cost, and operational
+                    reliability. I pick providers that are strong on financial text, offer predictable latency, and can be evaluated and monitored.
+                </p>
+
+                <h3>Agent loop (LiteLLM + tool calling)</h3>
+                <p>
+                    The repo implements a loop-based agent: the model proposes tool calls, tools execute, results go back into context, and the agent
+                    synthesizes a final answer. Using LiteLLM keeps the interface OpenAI-compatible so the underlying model can change without rewriting the loop.
                 </p>
 <pre class="code-block">
-from services.embedding import EmbeddingService
+from agent.main import FinancialResearchAgent
 
-embedding_service = EmbeddingService(settings)
-
-# Embed documents for storage
-doc_vectors = embedding_service.embed_documents([
-    "TechCorp Q3: Revenue $15.2B, cloud grew 45%...",
-    "Semiconductor sector faces inventory buildup..."
-])
-
-# Embed query for search (different optimization)
-query_vector = embedding_service.embed_query(
-    "What are the cloud growth trends?"
-)
+agent = FinancialResearchAgent(model=\"gpt-4o-mini\")  # any OpenAI-compatible model via LiteLLM
+response = await agent.chat(\"Give me a morning briefing on my portfolio\")
+print(response.content)
 </pre>
 
-                <h3>Qdrant for Internal Knowledge</h3>
+                <h3>Vector retrieval (Voyage finance embeddings + Qdrant filters)</h3>
                 <p>
-                    Qdrant provides sub-millisecond vector search with rich filtering. I store all proprietary 
-                    research—earnings analyses, sector notes, investment theses—with metadata for filtering by 
-                    ticker, date, or document type.
+                    Report chunks are embedded with a finance-specific model (query/document modes) and stored in Qdrant with indexed payload fields
+                    like <code>company</code>, <code>report_type</code>, <code>section</code>, and <code>period</code>. This makes retrieval precise and testable.
                 </p>
 <pre class="code-block">
-from services.vector_store import VectorStoreService
+from storage.vector_store import VectorStore
 
-vector_store = VectorStoreService(settings, embedding_service)
-
-# Index internal research
-vector_store.add_document(
-    content="NVDA positioned to capture 80% of AI accelerator market...",
-    metadata={
-        "title": "NVIDIA Investment Thesis",
-        "ticker": "NVDA",
-        "date": "2024-10-15",
-        "type": "investment_thesis"
-    }
+vs = VectorStore()
+await vs.init_collections()
+results = await vs.search_reports(
+    query=\"Blackwell demand commentary\",
+    companies=[\"NVDA\"],
+    report_types=[\"earnings_call\"],
+    limit=5,
 )
-
-# Semantic search
-docs = vector_store.search(
-    query="AI chip market share leaders",
-    top_k=5
-)
+for r in results:
+    print(r.score, r.chunk.section, r.chunk.period)
 </pre>
 
-                <h3>Exa for Real-Time Web Intelligence</h3>
+                <h3>Freshness (Exa web search with domain filters)</h3>
                 <p>
-                    Exa's neural search understands intent, not just keywords. When I ask about "Fed rate decision 
-                    implications," it finds analysis pieces, not just articles mentioning those words. The financial 
-                    domain filtering ensures I get Reuters, Bloomberg, and SEC filings—not Reddit speculation.
+                    Web search is the “recency layer.” Exa is configured with domain allowlists for high-quality sources (news, research, SEC),
+                    plus utilities like full-article content fetching when deeper reading is needed.
                 </p>
 <pre class="code-block">
-from services.exa_search import ExaSearchService
+from tools.web_search import ExaTools
 
-exa = ExaSearchService(settings)
-
-# Financial-focused search
-results = exa.search_financial(
-    query="semiconductor inventory cycle 2024",
-    num_results=5
-)
-
-# Research paper search
-papers = exa.search_research(
-    query="transformer models in quantitative finance"
-)
+exa = ExaTools()
+news = await exa.search_financial_news(\"NVDA export restrictions\", days_back=7, num_results=5)
+print(news)
 </pre>
 
-                <h3>DeepSeek v3.2 for Reasoning</h3>
+                <h3>Structured reasoning (Neo4j supply-chain graph + portfolio state)</h3>
                 <p>
-                    DeepSeek offers GPT-4 class reasoning at a fraction of the cost. For a system making dozens of 
-                    queries daily, this matters. The model excels at synthesizing multiple sources and maintaining 
-                    analytical rigor—exactly what quantamental research demands.
+                    The differentiator vs. pure RAG is structured context: supply-chain relationships live in Neo4j and portfolio state lives in Postgres.
+                    This enables dependency queries (“who supplies who”) and impact analysis (“what breaks if CoWoS is constrained”) that are hard to do with text alone.
                 </p>
-<pre class="code-block">
-from services.llm import LLMService
-
-llm = LLMService(settings)
-
-response = llm.answer_with_context(
-    question="How do current chip valuations compare to historical cycles?",
-    context=combined_context,  # Internal + web sources
-)
-</pre>
-
-                <h2>Three Search Modes</h2>
-                <p>The agent supports three retrieval strategies:</p>
-                <table class="tech-table">
-                    <thead>
-                        <tr>
-                            <th>Mode</th>
-                            <th>Sources</th>
-                            <th>Use Case</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>INTERNAL_ONLY</code></td>
-                            <td>Qdrant</td>
-                            <td>"What did our Q3 thesis say about AAPL?"</td>
-                        </tr>
-                        <tr>
-                            <td><code>WEB_ONLY</code></td>
-                            <td>Exa</td>
-                            <td>"What's the latest Fed decision?"</td>
-                        </tr>
-                        <tr>
-                            <td><code>HYBRID</code></td>
-                            <td>Both</td>
-                            <td>"How does our view compare to market consensus?"</td>
-                        </tr>
-                    </tbody>
-                </table>
 
 <pre class="code-block">
-from agent import QuantamentalAgent, SearchMode
+# In practice, the agent decides which tools to call (reports vs web vs graph vs portfolio)
+# based on the query and the available context.
+from agent.main import FinancialResearchAgent
 
-agent = QuantamentalAgent()
-
-# Hybrid search: internal + web
-response = agent.ask(
-    question="What are the risks in AI chip stocks given current valuations?",
-    mode=SearchMode.HYBRID,
-    top_k_internal=5,
-    top_k_web=5,
-    financial_focus=True
-)
-
-print(response.answer)
-print(response.get_sources_summary())
+agent = FinancialResearchAgent(model="gpt-4o-mini")
+response = await agent.chat("What are the key risks for AI chip stocks right now?")
+print(response.content)
 </pre>
 
                 <h2>Implementation Details</h2>
 
                 <h3>Project Structure</h3>
 <pre class="code-block">
-semantic-search/
-├── agent.py              # Main orchestrator
-├── cli.py                # Interactive CLI
-├── config.py             # Environment configuration
-├── services/
-│   ├── embedding.py      # Voyage AI integration
-│   ├── exa_search.py     # Exa web search
-│   ├── vector_store.py   # Qdrant operations
-│   └── llm.py            # DeepSeek interface
-└── examples/
-    ├── basic_usage.py
-    └── advanced_usage.py
+financial-deep-research/
+├── agent/                # Agent core loop + context manager
+├── tools/                # Portfolio / supply chain / reports / Exa web search
+├── storage/              # Postgres / Neo4j / Qdrant / Redis
+├── ingestion/            # Report processing + graph building
+├── evaluation/           # Datasets + metrics + runner
+├── scripts/              # init_databases.py, run_evaluation.py
+├── frontend/             # Optional UI
+└── requirements.txt
 </pre>
 
                 <h3>Configuration</h3>
 <pre class="code-block">
 # .env
+OPENAI_API_KEY=your_key
 VOYAGE_API_KEY=your_key
 EXA_API_KEY=your_key
-DEEPSEEK_API_KEY=your_key
 QDRANT_URL=http://localhost:6333
-
-EMBEDDING_MODEL=voyage-3-large
-LLM_MODEL=deepseek-chat
+NEO4J_URI=bolt://localhost:7687
+POSTGRES_DSN=postgresql://user:pass@localhost:5432/db
+REDIS_URL=redis://localhost:6379/0
 </pre>
 
                 <h3>CLI Usage</h3>
 <pre class="code-block">
-# Interactive chat with mode switching
-python cli.py chat
+# Start agent (CLI loop)
+python -m agent.main
 
-# Single question
-python cli.py ask "Semiconductor outlook for 2025" --mode hybrid
+# Initialize databases / collections
+python scripts/init_databases.py
 
-# Index your research folder
-python cli.py index ./research --recursive
-
-# Search without generating answer
-python cli.py search "NVIDIA earnings" --source both
+# Run evaluation suite (difficulty + category filters)
+python scripts/run_evaluation.py --difficulty easy
+python scripts/run_evaluation.py --difficulty hard --category investment_strategy --max-cases 5
 </pre>
 
-                <h2>Results</h2>
-                <p>Since deploying this system:</p>
-                <ul>
-                    <li><strong>Research time reduced by ~60%</strong>: The agent surfaces relevant internal notes and current market context in seconds</li>
-                    <li><strong>Consistency improved</strong>: Every analysis considers both proprietary research and real-time data</li>
-                    <li><strong>Audit trail created</strong>: Every answer includes source attribution for compliance and review</li>
-                    <li><strong>Scalable synthesis</strong>: Can process queries that would take hours of manual research</li>
-                </ul>
-
-                <h2>What's Next</h2>
+                <h2>What This System Enables</h2>
                 <p>
-                    This quantamental agent is one component of a larger agentic rebalancing system. Next steps include:
+                    Everything below maps directly to modules in the repo (tools + storage + evaluation):
                 </p>
                 <ul>
-                    <li><strong>Alpaca MCP Integration</strong>: Connect to live portfolio positions for context-aware analysis</li>
-                    <li><strong>Prediction Market Signals</strong>: Integrate Kalshi/Polymarket implied probabilities</li>
-                    <li><strong>Multi-LLM Ensemble</strong>: Route queries to specialized models (DeepSeek for reasoning, Claude for analysis, GPT for structured output)</li>
-                    <li><strong>Options Strategy Module</strong>: Extend the agent to reason about derivative positions and hedging</li>
+                    <li><strong>Portfolio Q&amp;A:</strong> query positions, exposure, and risk from Postgres-backed portfolio tools</li>
+                    <li><strong>Supply-chain analysis:</strong> retrieve dependencies and run impact queries from the Neo4j knowledge graph</li>
+                    <li><strong>Report-grounded answers:</strong> semantic search over filings/transcripts via Voyage embeddings + Qdrant filters</li>
+                    <li><strong>Freshness:</strong> pull recent news/filings/research via Exa with domain filters</li>
+                    <li><strong>Repeatable iteration:</strong> run the evaluation suite to catch regressions in tool selection, numeric accuracy, and hallucinations</li>
                 </ul>
 
+                <h2>How I Evaluate It (Practical Checklist)</h2>
+                <p>
+                    The most important thing I learned: tool-augmented RAG systems fail quietly. A correct-sounding answer can be based on the wrong tool output
+                    or a mis-grounded number. My evaluation loop is built around explicit test cases with expected tools/entities/values and difficulty tiers.
+                </p>
+                <h3>1) Build a gold set of questions</h3>
+                <p>
+                    I maintain a benchmark suite of recurring investor workflows (supply-chain dependency, portfolio risk, report extraction, and strategic decisions).
+                    Each case specifies what “correct behavior” means: expected tools, expected entities, expected numbers within tolerance, and what must not appear.
+                </p>
+<pre class="code-block"># eval/questions.json (illustrative)
+[
+  {
+    "id": "nvda_risks_2024q4",
+    "question": "What are the near-term risks for NVDA given current valuation and export controls?",
+    "expected_tools": ["search_financial_news", "search_reports"],
+    "expected_entities": ["NVDA"],
+    "must_not_contain": ["fabricated numbers"]
+  }
+]</pre>
+
+                <h3>2) Retrieval-first metrics</h3>
+                <p>
+                    Before judging the answer, I evaluate behavior: did the agent call the right tools and anchor to the right entities and numbers?
+                    If tool selection is wrong, “better prompting” only hides the failure mode.
+                </p>
+                <ul>
+                    <li><strong>Tool selection score:</strong> expected tools vs actual tool calls.</li>
+                    <li><strong>Entity grounding:</strong> expected entities present; prohibited entities absent.</li>
+                    <li><strong>Numeric correctness:</strong> extracted values within tolerance (and no “10-K → 10” parsing bugs).</li>
+                </ul>
+
+                <h3>3) Source-grounded answer scoring</h3>
+                <p>
+                    For answers, I bias toward grounded outputs. When the agent is missing data, it should ask for missing context or avoid hard claims
+                    rather than hallucinating.
+                </p>
+                <ul>
+                    <li><strong>Factual checks:</strong> expected facts present, prohibited claims absent.</li>
+                    <li><strong>Hallucination detection:</strong> enforce must-not-contain constraints for known failure modes.</li>
+                    <li><strong>Reasoning/strategy signals:</strong> for medium/hard cases, verify it provides analysis and actionable recommendations.</li>
+                </ul>
+
+                <h3>4) Latency and token economics</h3>
+                <p>
+                    For daily usage, cost and responsiveness are product features. I track latency percentiles and tokens-per-answer, and I use
+                    routing (cheaper models for summarization, stronger models for synthesis) to hit budgets without collapsing quality.
+                </p>
+
+                <h3>5) Monitoring for drift</h3>
+                <p>
+                    Markets change and sources change. I log query types, retrieval distributions (doc types, dates), and “answer confidence”
+                    proxies (abstentions, citation density) to detect drift early and refresh the benchmark set.
+                </p>
+
+                <p>
+                    In practice, I run this continuously during iteration:
+                </p>
+<pre class="code-block">python scripts/run_evaluation.py --difficulty easy
+python scripts/run_evaluation.py --difficulty hard --category investment_strategy --max-cases 5
+</pre>
+
                 <h2>Try It Yourself</h2>
-                <p>The complete implementation is available at: <code>github.com/yanpan/semantic-search</code></p>
+                <p>The complete implementation is available at: <code>github.com/Yvette-0508/financial-deep-research</code> (private)</p>
 <pre class="code-block">
-git clone https://github.com/yanpan/semantic-search
-cd semantic-search
+git clone https://github.com/Yvette-0508/financial-deep-research
+cd financial-deep-research
 pip install -r requirements.txt
 # Add your API keys to .env
-python cli.py chat
+python scripts/init_databases.py
+python -m agent.main
 </pre>
 
                 <div class="blog-article-footer">
-                    <p><a href="portfolio.html">← Back to Portfolio</a></p>
+                    <p><a href="blog.html">← Back to Blog</a></p>
                 </div>
             </div>
         </article>
@@ -345,7 +373,13 @@ python cli.py chat
     <footer class="footer">
         <div class="footer-content">
             <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
-            <p class="contact-email"><a href="mailto:yvette@zentraders.xyz">yvette@zentraders.xyz</a></p>
+            <p class="contact-links">
+                <a href="mailto:yanpan.0508@gmail.com">yanpan.0508@gmail.com</a>
+                <span class="contact-sep">•</span>
+                <a href="https://github.com/Yvette-0508" target="_blank" rel="noopener noreferrer">Git</a>
+                <span class="contact-sep">•</span>
+                <a href="https://www.linkedin.com/in/yvette-pan-488247173/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </p>
         </div>
     </footer>
 </body>

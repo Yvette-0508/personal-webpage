@@ -410,6 +410,66 @@ body {
     color: #333;
 }
 
+/* Reading Page */
+.reading-page {
+    max-width: 900px;
+}
+
+.reading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.reading-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fafafa;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reading-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.reading-item .reading-placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+    padding: 1rem;
+    line-height: 1.4;
+}
+
+.reading-tbc {
+    margin-top: 1.25rem;
+    color: #999;
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .reading-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .reading-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Blog Article Page */
 .blog-post-page {
     max-width: 900px;
@@ -462,6 +522,12 @@ body {
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     object-fit: cover;
+}
+
+/* Full (non-cropped) hero images for tall diagrams/screenshots */
+.blog-hero-image-full {
+    height: auto;
+    object-fit: contain;
 }
 
 .blog-article-content ul {
@@ -727,6 +793,26 @@ body {
 .contact-email a:hover {
     color: #333;
     text-decoration: underline;
+}
+
+.contact-links {
+    margin-top: 0.5rem;
+}
+
+.contact-links a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-links a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.contact-sep {
+    margin: 0 0.6rem;
+    color: #999;
 }
 
 /* Responsive Design */

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Open Source to Product: Monetizing a Mobile Phone Agent (global-autoglm) - Yan Pan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">YAN PAN</div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="reading.html">Reading</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container blog-post-page">
+        <article class="blog-article">
+            <header class="blog-article-header">
+                <h1 class="blog-article-title">From Open Source to Product: Monetizing a Mobile End Agent (global-autoglm)</h1>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">December 16, 2025</span>
+                    <span class="blog-post-category">AI Agents</span>
+                    <span class="blog-post-category">Mobile</span>
+                    <span class="blog-post-category">Product</span>
+                </div>
+            </header>
+
+            <div class="blog-article-content">
+                <img src="images/kanban.png" alt="Kanban board for AutoGLM productization roadmap" class="blog-hero-image blog-hero-image-full">
+
+                <h2>Why this project exists</h2>
+                <p>
+                    “Mobile end agents” look magical in demos, but the gap between an impressive open-source prototype and something users can rely on
+                    (and pay for) is mostly engineering: concurrency, latency, cost control, safety, and operational boundaries.
+                    I forked <a href="https://github.com/zai-org/Open-AutoGLM?tab=readme-ov-file" target="_blank" rel="noopener noreferrer">Open-AutoGLM</a>
+                    to build a more production-minded variant: <a href="https://github.com/Yvette-0508/global-autoglm" target="_blank" rel="noopener noreferrer">global-autoglm</a>.
+                </p>
+
+                <h2>The real “product” problems (not the demo problems)</h2>
+                <p>
+                    My initial requirements doc was blunt: users don’t buy a cool agent—they buy speed, reliability, and predictable behavior.
+                    The biggest gaps I saw in the original stack were:
+                </p>
+                <img src="images/real.jpg" alt="Real-world productization constraints and operator workflow" class="blog-hero-image blog-hero-image-full">
+                <ul>
+                    <li><strong>Concurrency + isolation:</strong> the codebase is device-isolated by design, but typical usage still feels serial from an operator’s perspective.</li>
+                    <li><strong>Response latency:</strong> slow turn-time breaks the illusion of control and kills retention.</li>
+                    <li><strong>Persona separation:</strong> different agents need different “voices” and constraints.</li>
+                    <li><strong>Multi-turn memory:</strong> without long-horizon memory, conversations reset and the agent repeats itself.</li>
+                    <li><strong>Safety boundaries:</strong> NSFW/PII boundaries must be explicit, auditable, and enforceable.</li>
+                    <li><strong>Cost / tokens:</strong> chain-of-thought verbosity and inefficient loops can make unit economics impossible.</li>
+                </ul>
+
+                <h2>The first monetizable improvement: multi-device parallelism</h2>
+                <p>
+                    One practical requirement was operating multiple phones from a single machine. The runtime model is
+                    <code>1 device == 1 process</code>, so the simplest reliable parallelism is to spawn a process per device and stream logs with prefixes.
+                    That became <code>scripts/run_multi_devices.py</code> in my fork.
+                </p>
+                <p>
+                    Code: <a href="https://github.com/Yvette-0508/global-autoglm/blob/main/scripts/run_multi_devices.py" target="_blank" rel="noopener noreferrer">run_multi_devices.py</a>
+                </p>
+<pre class="code-block"># Same task on 3 devices (comma-separated), max 2 in parallel
+python scripts/run_multi_devices.py --devices "A,B,C" --task "Open Chrome and search for wireless earphones" --max-parallel 2
+
+# Devices from file + per-device tasks from JSON mapping
+python scripts/run_multi_devices.py --devices-file devices.txt --tasks-json tasks.json
+</pre>
+
+                <h2>Latency and “operator experience” changes</h2>
+                <p>
+                    To improve responsiveness, I focused on three levers that matter in production:
+                </p>
+                <ul>
+                    <li><strong>Model routing:</strong> using faster/cheaper endpoints when the task is simple, and reserving stronger models for complex screens.</li>
+                    <li><strong>Prompt discipline:</strong> reduce verbose reasoning, keep the agent’s “think” concise, and enforce one executable action per step.</li>
+                    <li><strong>Timing knobs:</strong> expose and tune delays/timeouts so retries don’t feel like “the agent is stuck.”</li>
+                </ul>
+
+                <h2>What I learned about monetization</h2>
+                <p>
+                    The monetizable features aren’t flashy—they’re the boring things customers ask for immediately:
+                    predictable throughput, clear failure modes, safety controls, and cost transparency.
+                    The biggest mindset shift was treating the agent like an operational system (SLOs, logs, retries, bounded behavior), not a chat toy.
+                </p>
+
+                <h2>What’s next</h2>
+                <ul>
+                    <li><strong>Memory:</strong> long-horizon preference + conversation state with user-visible edit/delete controls.</li>
+                    <li><strong>Better UI grounding:</strong> reduce hallucinations on dense icon grids via app/icon RAG and stronger UI element localization.</li>
+                    <li><strong>Policy enforcement:</strong> real, testable safety gates for sensitive operations and content boundaries.</li>
+                    <li><strong>Cost controls:</strong> token budgeting, shorter plans, and caching of repeated UI interpretations.</li>
+                </ul>
+
+                <div class="blog-article-footer">
+                    <p><a href="blog.html">← Back to Blog</a></p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
+            <p class="contact-links">
+                <a href="mailto:yanpan.0508@gmail.com">yanpan.0508@gmail.com</a>
+                <span class="contact-sep">•</span>
+                <a href="https://github.com/Yvette-0508" target="_blank" rel="noopener noreferrer">Git</a>
+                <span class="contact-sep">•</span>
+                <a href="https://www.linkedin.com/in/yvette-pan-488247173/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
