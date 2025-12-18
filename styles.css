@@ -776,6 +776,10 @@ body {
         height: 130px;
         margin-bottom: 1.25rem;
     }
+    
+    .reading-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
@@ -789,6 +793,10 @@ body {
     
     .project-component {
         padding: 1.5rem;
+    }
+    
+    .reading-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1056,29 +1064,45 @@ body {
 
 .reading-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.reading-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fafafa;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .reading-item img {
     width: 100%;
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.reading-item img:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+.reading-item .reading-placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+    padding: 1rem;
+    line-height: 1.4;
 }
 
 .reading-tbc {
-    font-size: 1rem;
+    margin-top: 1.25rem;
     color: #999;
+    font-size: 1rem;
     font-style: italic;
-    margin-bottom: 3rem;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .reading-shop-link {
