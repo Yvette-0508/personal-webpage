@@ -24,41 +24,27 @@
         <h1 class="page-title">Blog</h1>
         <p class="page-subtitle">Technical insights on AI, quantitative finance, and trading systems</p>
 
-        <div class="blog-posts">
-            <article class="blog-post">
-                <h2 class="blog-post-title"><a href="blog-global-autoglm-monetization.html">From Open Source to Product: Monetizing a Mobile Phone Agent (global-autoglm)</a></h2>
-                <div class="blog-post-meta">
-                    <span class="blog-post-date">December 16, 2025</span>
-                    <span class="blog-post-category">AI Agents</span>
-                    <span class="blog-post-category">Mobile</span>
-                    <span class="blog-post-category">Product</span>
+        <div class="blog-layout">
+            <aside class="blog-sidebar" aria-label="Blog filters">
+                <div class="blog-sidebar-title">Tags</div>
+                <div class="tag-filter-actions">
+                    <button type="button" class="tag-filter-clear" id="tagFilterClear">Clear</button>
+                    <span class="tag-filter-count" id="tagFilterCount">Showing all</span>
                 </div>
-                <div class="blog-post-excerpt">
-                    <p>
-                        Turning a mobile end agent from a demo into a product users can trust and pay for requires engineering the fundamentals: scalable concurrency, low-latency execution, explicit safety guardrails, and sustainable token-level unit economics.
-                    </p>
-                </div>
-                <a href="blog-global-autoglm-monetization.html" class="read-more">Read More →</a>
-            </article>
+                <div class="tag-filter-list" id="tagFilterList"></div>
+            </aside>
 
-            <article class="blog-post">
-                <h2 class="blog-post-title"><a href="blog-voice-driven-realtime-video.html">Building a Voice-Driven Real-Time Video Generation Projector</a></h2>
-                <div class="blog-post-meta">
-                    <span class="blog-post-date">December 12, 2025</span>
-                    <span class="blog-post-category">Multimodality</span>
-                    <span class="blog-post-category">Generative Video</span>
-                    <span class="blog-post-category">Real-time Systems</span>
+            <div class="blog-content">
+                <div class="blog-controls">
+                    <label for="blogSortOrder">Sort</label>
+                    <select id="blogSortOrder">
+                        <option value="desc" selected>Newest</option>
+                        <option value="asc">Oldest</option>
+                    </select>
                 </div>
-                <div class="blog-post-excerpt">
-                    <p>
-                        Notes from building a low-latency voice-to-video pipeline that turns spoken stories into projected cinematic sequences:
-                        streaming ASR, LLM scene planning, keyframes, motion generation, and a projector-ready render loop.
-                    </p>
-                </div>
-                <a href="blog-voice-driven-realtime-video.html" class="read-more">Read More →</a>
-            </article>
-
-            <article class="blog-post">
+                <div class="blog-posts" id="blogPosts">
+                    <article class="blog-post" data-pinned="true" data-pin-order="1">
+                <span class="blog-post-pin-badge" aria-label="Pinned post">Pinned</span>
                 <h2 class="blog-post-title"><a href="blog-agentic-rebalancing.html">Building a Financial Research Agent: Graph + RAG + Continuous Evaluation</a></h2>
                 <div class="blog-post-meta">
                     <span class="blog-post-date">November 26, 2024</span>
@@ -71,6 +57,69 @@
                     </p>
                 </div>
                 <a href="blog-agentic-rebalancing.html" class="read-more">Read More →</a>
+            </article>
+
+                    <article class="blog-post">
+                <h2 class="blog-post-title"><a href="blog-global-autoglm-monetization.html">Side Project: Would You Wait 5 Minutes Just to Have a Mobile Agent Open YouTube?</a></h2>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">December 16, 2025</span>
+                    <span class="blog-post-category">AI Agents</span>
+                    <span class="blog-post-category">Mobile</span>
+                    <span class="blog-post-category">Product</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>
+                        Scalable concurrency, low-latency execution, explicit safety guardrails, and sustainable token-level unit economics matters.
+                    </p>
+                </div>
+                <a href="blog-global-autoglm-monetization.html" class="read-more">Read More →</a>
+            </article>
+
+                    <article class="blog-post">
+                <h2 class="blog-post-title"><a href="blog-gemini-tongyi-deepresearch.html">What I Learned from Gemini Deep Research and Tongyi Deep Research</a></h2>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">December 18, 2025</span>
+                    <span class="blog-post-category">AI</span>
+                    <span class="blog-post-category">Research</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>
+                        How to build trust in financial setting and lower verification cost
+                    </p>
+                </div>
+                <a href="blog-gemini-tongyi-deepresearch.html" class="read-more">Read More →</a>
+            </article>
+
+                    <article class="blog-post">
+                <h2 class="blog-post-title"><a href="blog-community-reflections-llm-finance.html">Community Reflections on LLM-Powered Financial Research Tools</a></h2>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">December 18, 2025</span>
+                    <span class="blog-post-category">AI</span>
+                    <span class="blog-post-category">Finance</span>
+                    <span class="blog-post-category">Research</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>
+                        How to build trust in financial setting and lower verification cost
+                    </p>
+                </div>
+                <a href="blog-community-reflections-llm-finance.html" class="read-more">Read More →</a>
+            </article>
+
+            <article class="blog-post">
+                <h2 class="blog-post-title"><a href="blog-voice-driven-realtime-video.html">Side Project: The 32ms Barrier: Why Real-Time Multimodal AI is Still Failing.</a></h2>
+                <div class="blog-post-meta">
+                    <span class="blog-post-date">December 12, 2025</span>
+                    <span class="blog-post-category">Multimodality</span>
+                    <span class="blog-post-category">Generative Video</span>
+                    <span class="blog-post-category">Real-time Systems</span>
+                </div>
+                <div class="blog-post-excerpt">
+                    <p>
+                        A real-time voice-to-video pipeline that turns spoken stories into cinematic sequences
+                    </p>
+                </div>
+                <a href="blog-voice-driven-realtime-video.html" class="read-more">Read More →</a>
             </article>
 
             <article class="blog-post">
@@ -87,23 +136,177 @@
                 </div>
                 <a href="blog-options-hedging-finetuned.html" class="read-more">Read More →</a>
             </article>
-
-            <article class="blog-post">
-                <h2 class="blog-post-title">Getting Started with AI Agents in Trading</h2>
-                <div class="blog-post-meta">
-                    <span class="blog-post-date">November 24, 2024</span>
-                    <span class="blog-post-category">AI Agents</span>
                 </div>
-                <div class="blog-post-excerpt">
-                    <p>
-                        An introduction to building AI agent systems for quantitative trading. This article explores 
-                        agent architectures, LLM integration patterns, and evaluation frameworks for financial applications.
-                    </p>
-                </div>
-                <a href="#" class="read-more">Read More →</a>
-            </article>
+            </div>
         </div>
     </main>
+
+    <script>
+        (function () {
+            const postsContainer = document.getElementById('blogPosts');
+            const posts = Array.from(postsContainer.querySelectorAll('.blog-post'));
+            const filterList = document.getElementById('tagFilterList');
+            const clearBtn = document.getElementById('tagFilterClear');
+            const countLabel = document.getElementById('tagFilterCount');
+            const sortSelect = document.getElementById('blogSortOrder');
+
+            const normalize = (s) => s.trim();
+            const selected = new Set();
+            const pageSize = 3;
+            let currentPage = 1;
+
+            function getDateTsForPost(post) {
+                const el = post.querySelector('.blog-post-date');
+                const txt = el ? normalize(el.textContent) : '';
+                const ts = Date.parse(txt);
+                return Number.isFinite(ts) ? ts : 0;
+            }
+
+            function getTagsForPost(post) {
+                return Array.from(post.querySelectorAll('.blog-post-category'))
+                    .map((el) => normalize(el.textContent))
+                    .filter(Boolean);
+            }
+
+            // Build tag index
+            const allTagsSet = new Set();
+            posts.forEach((post) => {
+                const tags = getTagsForPost(post);
+                post.dataset.tags = tags.join('|');
+                tags.forEach((t) => allTagsSet.add(t));
+                post.dataset.dateTs = String(getDateTsForPost(post));
+            });
+
+            const allTags = Array.from(allTagsSet).sort((a, b) => a.localeCompare(b));
+
+            function renderTags() {
+                filterList.innerHTML = '';
+                allTags.forEach((tag) => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'tag-chip';
+                    btn.textContent = tag;
+                    btn.dataset.tag = tag;
+                    btn.addEventListener('click', () => {
+                        if (selected.has(tag)) selected.delete(tag);
+                        else selected.add(tag);
+                        updateUI();
+                    });
+                    filterList.appendChild(btn);
+                });
+            }
+
+            function postMatches(post) {
+                if (selected.size === 0) return true;
+                const tags = (post.dataset.tags || '').split('|').map(normalize);
+                // AND match: must include all selected tags
+                for (const t of selected) {
+                    if (!tags.includes(t)) return false;
+                }
+                return true;
+            }
+
+            function getSortedFilteredPosts() {
+                const order = sortSelect ? sortSelect.value : 'desc';
+                const filtered = posts.filter(postMatches);
+                const sorted = [...filtered].sort((a, b) => {
+                    const pa = a.dataset.pinned === 'true';
+                    const pb = b.dataset.pinned === 'true';
+                    if (pa !== pb) return pb - pa; // pinned first
+                    if (pa && pb) {
+                        const oa = Number(a.dataset.pinOrder || '999');
+                        const ob = Number(b.dataset.pinOrder || '999');
+                        if (oa !== ob) return oa - ob; // lower order first
+                    }
+                    const ta = Number(a.dataset.dateTs || '0');
+                    const tb = Number(b.dataset.dateTs || '0');
+                    return order === 'asc' ? ta - tb : tb - ta;
+                });
+                return sorted;
+            }
+
+            function updateUI() {
+                const sortedFiltered = getSortedFilteredPosts();
+
+                // Ensure DOM order matches current sort for accessibility / copy
+                sortedFiltered.forEach((post) => postsContainer.appendChild(post));
+
+                // Update tag chip active state
+                filterList.querySelectorAll('.tag-chip').forEach((btn) => {
+                    btn.classList.toggle('active', selected.has(btn.dataset.tag));
+                });
+
+                // Pagination setup
+                const total = sortedFiltered.length;
+                const totalPages = Math.max(1, Math.ceil(total / pageSize));
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                const start = (currentPage - 1) * pageSize;
+                const end = start + pageSize;
+                const pagePosts = new Set(sortedFiltered.slice(start, end));
+
+                // Show only posts on current page; hide others
+                posts.forEach((post) => {
+                    post.style.display = pagePosts.has(post) ? '' : 'none';
+                });
+
+                if (selected.size === 0) {
+                    countLabel.textContent = total === posts.length ? 'Showing all' : `Showing ${total}`;
+                } else {
+                    const sel = Array.from(selected).join(', ');
+                    countLabel.textContent = `Showing ${total} • ${sel}`;
+                }
+
+                // Render / update pagination controls
+                let pager = document.getElementById('blogPager');
+                if (!pager) {
+                    pager = document.createElement('div');
+                    pager.id = 'blogPager';
+                    pager.className = 'blog-pagination';
+                    pager.innerHTML = `
+                        <button type="button" class="blog-page-btn" id="blogPrev">Prev</button>
+                        <span class="blog-page-indicator" id="blogPageIndicator"></span>
+                        <button type="button" class="blog-page-btn" id="blogNext">Next</button>
+                    `;
+                    postsContainer.parentElement.appendChild(pager);
+
+                    pager.querySelector('#blogPrev').addEventListener('click', () => {
+                        currentPage -= 1;
+                        updateUI();
+                    });
+                    pager.querySelector('#blogNext').addEventListener('click', () => {
+                        currentPage += 1;
+                        updateUI();
+                    });
+                }
+
+                const prevBtn = document.getElementById('blogPrev');
+                const nextBtn = document.getElementById('blogNext');
+                const indicator = document.getElementById('blogPageIndicator');
+
+                indicator.textContent = `Page ${currentPage} / ${totalPages}`;
+                prevBtn.disabled = currentPage <= 1;
+                nextBtn.disabled = currentPage >= totalPages;
+            }
+
+            clearBtn.addEventListener('click', () => {
+                selected.clear();
+                currentPage = 1;
+                updateUI();
+            });
+
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    currentPage = 1;
+                    updateUI();
+                });
+            }
+
+            renderTags();
+            updateUI();
+        })();
+    </script>
 
     <footer class="footer">
         <div class="footer-content">

@@ -349,6 +349,154 @@ body {
     max-width: 900px;
 }
 
+.blog-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.blog-sidebar {
+    width: 160px;
+    flex: 0 0 160px;
+    position: sticky;
+    top: 110px;
+    align-self: flex-start;
+}
+
+.blog-sidebar-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.tag-filter-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag-filter-count {
+    font-size: 0.9rem;
+    color: #999;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.tag-filter-clear {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #666;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.tag-filter-clear:hover {
+    color: #333;
+    border-color: #cfcfcf;
+}
+
+.tag-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-chip {
+    border: 1px solid #e0e0e0;
+    background: #f7f7f7;
+    color: #555;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.tag-chip:hover {
+    border-color: #cfcfcf;
+    color: #333;
+}
+
+.tag-chip.active {
+    background: #333;
+    border-color: #333;
+    color: #fff;
+}
+
+.blog-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.blog-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.blog-controls label {
+    font-size: 0.9rem;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.blog-controls select {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+}
+
+.blog-page-btn {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    color: #666;
+    padding: 0.45rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.blog-page-btn:hover {
+    color: #333;
+    border-color: #cfcfcf;
+}
+
+.blog-page-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.blog-page-indicator {
+    font-size: 0.9rem;
+    color: #999;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
 .blog-posts {
     display: flex;
     flex-direction: column;
@@ -374,7 +522,9 @@ body {
 
 .blog-post-meta {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    row-gap: 0.6rem;
     margin-bottom: 1.5rem;
 }
 
@@ -383,10 +533,25 @@ body {
     color: #999;
 }
 
+.blog-post-pin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #333 0%, #111 100%);
+    color: #fff;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    margin-bottom: 0.75rem;
+}
+
 .blog-post-category {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #666;
-    padding: 0.2rem 0.8rem;
+    padding: 0.15rem 0.65rem;
     background-color: #f5f5f5;
     border-radius: 3px;
 }
@@ -855,6 +1020,17 @@ body {
     .blog-hero-image {
         height: 130px;
         margin-bottom: 1.25rem;
+    }
+
+    .blog-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .blog-sidebar {
+        width: 100%;
+        flex: 1 1 auto;
+        position: static;
     }
 }
 
