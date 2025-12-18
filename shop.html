@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Shop - Yan Pan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">YAN PAN</div>
+            <div class="nav-links">
+                <a href="index.html">About</a>
+                <a href="resume.html">Resume</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="reading.html">Reading</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container shop-page">
+        <h1 class="page-title">Data Shop</h1>
+        <p class="page-subtitle">Premium datasets for research, analysis, and AI/ML applications</p>
+
+        <div class="shop-layout">
+            <!-- Products Grid -->
+            <section class="shop-products-section">
+                <h2 class="section-title">Available Datasets</h2>
+                <div class="products-grid-two-col">
+                    <div class="product-card data-card">
+                        <div class="data-label-wrapper">
+                            <span class="data-label">OPTIONS</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Options Market Data</h3>
+                            <p class="product-description">Historical options pricing, Greeks (delta, gamma, vega, theta), IV surfaces, and chain data</p>
+                            <div class="data-meta">
+                                <span class="data-format">CSV / Parquet</span>
+                                <span class="data-size">5+ years</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card data-card">
+                        <div class="data-label-wrapper">
+                            <span class="data-label">EQUITY</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Equity Price Data</h3>
+                            <p class="product-description">Daily/intraday OHLCV data, adjusted prices, splits, dividends for US equities</p>
+                            <div class="data-meta">
+                                <span class="data-format">CSV / JSON</span>
+                                <span class="data-size">10+ years</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card data-card">
+                        <div class="data-label-wrapper">
+                            <span class="data-label">NLP</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Financial NLP Dataset</h3>
+                            <p class="product-description">Labeled sentiment data from earnings calls, SEC filings, news articles for ML training</p>
+                            <div class="data-meta">
+                                <span class="data-format">JSON / JSONL</span>
+                                <span class="data-size">500K+ samples</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card data-card">
+                        <div class="data-label-wrapper">
+                            <span class="data-label">FUNDAMENTALS</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Company Fundamentals</h3>
+                            <p class="product-description">Quarterly financials, ratios, sector classifications, and analyst estimates</p>
+                            <div class="data-meta">
+                                <span class="data-format">CSV / SQL</span>
+                                <span class="data-size">5000+ tickers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card data-card">
+                        <div class="data-label-wrapper">
+                            <span class="data-label">ALT DATA</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Alternative Data</h3>
+                            <p class="product-description">Web traffic, app usage, satellite imagery insights, social media metrics</p>
+                            <div class="data-meta">
+                                <span class="data-format">Various</span>
+                                <span class="data-size">Custom</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card data-card">
+                        <div class="data-label-wrapper">
+                            <span class="data-label">CUSTOM</span>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Custom Data Pipeline</h3>
+                            <p class="product-description">Bespoke data collection, cleaning, and delivery for your specific research needs</p>
+                            <div class="data-meta">
+                                <span class="data-format">Your format</span>
+                                <span class="data-size">On demand</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chatbot Panel -->
+            <aside class="chat-panel">
+                <div class="chat-header">
+                    <span class="chat-title">Ask about data</span>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-message bot-message">
+                        <p>Hi! What kind of data are you looking for? Describe your needs and I'll help you find the right dataset.</p>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input 
+                        type="text" 
+                        id="chat-input" 
+                        class="chat-input" 
+                        placeholder="Type your message..."
+                        autocomplete="off"
+                    >
+                    <button class="chat-send-btn" onclick="sendMessage()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Contact for Purchase -->
+        <section class="shop-contact-section">
+            <div class="contact-box">
+                <h3>Interested in our data?</h3>
+                <p>Contact me to discuss data specifications, licensing, delivery format, and pricing.</p>
+                <a href="mailto:yanpan.0508@gmail.com" class="contact-btn">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
+            <p class="contact-links">
+                <a href="mailto:yanpan.0508@gmail.com">yanpan.0508@gmail.com</a>
+                <span class="contact-sep">•</span>
+                <a href="https://github.com/Yvette-0508" target="_blank" rel="noopener noreferrer">Git</a>
+                <span class="contact-sep">•</span>
+                <a href="https://www.linkedin.com/in/yvette-pan-488247173/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user-message';
+            userMsg.innerHTML = '<p>' + message + '</p>';
+            messagesContainer.appendChild(userMsg);
+            
+            input.value = '';
+            
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Bot response
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot-message';
+                botMsg.innerHTML = '<p>Thanks for your interest! Please email me at yanpan.0508@gmail.com with your specific requirements and I\'ll get back to you with available options.</p>';
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 800);
+        }
+
+        document.getElementById('chat-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

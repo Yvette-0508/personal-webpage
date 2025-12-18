@@ -349,154 +349,6 @@ body {
     max-width: 900px;
 }
 
-.blog-layout {
-    display: flex;
-    gap: 3rem;
-    align-items: flex-start;
-}
-
-.blog-sidebar {
-    width: 160px;
-    flex: 0 0 160px;
-    position: sticky;
-    top: 110px;
-    align-self: flex-start;
-}
-
-.blog-sidebar-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    letter-spacing: 0.02em;
-}
-
-.tag-filter-actions {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.tag-filter-count {
-    font-size: 0.9rem;
-    color: #999;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.tag-filter-clear {
-    border: 1px solid #e0e0e0;
-    background: #fff;
-    color: #666;
-    padding: 0.35rem 0.6rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.tag-filter-clear:hover {
-    color: #333;
-    border-color: #cfcfcf;
-}
-
-.tag-filter-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tag-chip {
-    border: 1px solid #e0e0e0;
-    background: #f7f7f7;
-    color: #555;
-    padding: 0.35rem 0.65rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.tag-chip:hover {
-    border-color: #cfcfcf;
-    color: #333;
-}
-
-.tag-chip.active {
-    background: #333;
-    border-color: #333;
-    color: #fff;
-}
-
-.blog-content {
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-.blog-controls {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-}
-
-.blog-controls label {
-    font-size: 0.9rem;
-    color: #666;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.blog-controls select {
-    border: 1px solid #e0e0e0;
-    background: #fff;
-    color: #333;
-    border-radius: 8px;
-    padding: 0.35rem 0.6rem;
-    font-size: 0.9rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.blog-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 2.5rem;
-}
-
-.blog-page-btn {
-    border: 1px solid #e0e0e0;
-    background: #fff;
-    color: #666;
-    padding: 0.45rem 0.85rem;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.blog-page-btn:hover {
-    color: #333;
-    border-color: #cfcfcf;
-}
-
-.blog-page-btn:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-.blog-page-indicator {
-    font-size: 0.9rem;
-    color: #999;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
 .blog-posts {
     display: flex;
     flex-direction: column;
@@ -522,9 +374,7 @@ body {
 
 .blog-post-meta {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    row-gap: 0.6rem;
+    gap: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
@@ -533,25 +383,10 @@ body {
     color: #999;
 }
 
-.blog-post-pin-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #333 0%, #111 100%);
-    color: #fff;
-    font-size: 0.8rem;
-    letter-spacing: 0.02em;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
-    margin-bottom: 0.75rem;
-}
-
 .blog-post-category {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
-    padding: 0.15rem 0.65rem;
+    padding: 0.2rem 0.8rem;
     background-color: #f5f5f5;
     border-radius: 3px;
 }
@@ -573,66 +408,6 @@ body {
 
 .read-more:hover {
     color: #333;
-}
-
-/* Reading Page */
-.reading-page {
-    max-width: 900px;
-}
-
-.reading-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-top: 2.5rem;
-}
-
-.reading-item {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: #fafafa;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.reading-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.reading-item .reading-placeholder {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.9rem;
-    color: #888;
-    text-align: center;
-    padding: 1rem;
-    line-height: 1.4;
-}
-
-.reading-tbc {
-    margin-top: 1.25rem;
-    color: #999;
-    font-size: 1rem;
-    font-style: italic;
-    text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-@media (max-width: 768px) {
-    .reading-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .reading-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Blog Article Page */
@@ -960,26 +735,6 @@ body {
     text-decoration: underline;
 }
 
-.contact-links {
-    margin-top: 0.5rem;
-}
-
-.contact-links a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.contact-links a:hover {
-    color: #333;
-    text-decoration: underline;
-}
-
-.contact-sep {
-    margin: 0 0.6rem;
-    color: #999;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .main-title {
@@ -1021,17 +776,6 @@ body {
         height: 130px;
         margin-bottom: 1.25rem;
     }
-
-    .blog-layout {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .blog-sidebar {
-        width: 100%;
-        flex: 1 1 auto;
-        position: static;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1044,6 +788,376 @@ body {
     }
     
     .project-component {
+        padding: 1.5rem;
+    }
+}
+
+/* Shop Page Styles */
+.shop-page {
+    max-width: 900px;
+}
+
+/* Shop Layout */
+.shop-layout {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.shop-products-section {
+    margin-bottom: 0;
+}
+
+/* Two Column Product Grid */
+.products-grid-two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* Chat Panel - Frameless */
+.chat-panel {
+    position: sticky;
+    top: 100px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+.chat-header {
+    padding: 0 0 0.75rem 0;
+}
+
+.chat-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.chat-message {
+    max-width: 90%;
+    padding: 0.625rem 0.875rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.chat-message p {
+    margin: 0;
+}
+
+.bot-message {
+    background: #f5f5f5;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.user-message {
+    background: #333;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.chat-input:focus {
+    border-color: #999;
+}
+
+.chat-input::placeholder {
+    color: #999;
+}
+
+.chat-send-btn {
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: #333;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.chat-send-btn:hover {
+    background: #555;
+}
+
+/* Products Grid */
+.shop-products-section {
+    margin-bottom: 3.5rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-image-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+/* Data Card Label Styles */
+.data-card .data-label-wrapper {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.data-meta {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.data-format,
+.data-size {
+    font-size: 0.8rem;
+    color: #666;
+    background: #f0f0f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+}
+
+.product-info {
+    padding: 1.25rem;
+}
+
+.product-name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.product-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.product-price {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    background: #f5f5f5;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+}
+
+/* Shop Contact Section */
+.shop-contact-section {
+    margin-bottom: 2rem;
+}
+
+.contact-box {
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    color: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.contact-box h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.contact-box p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+/* Reading Page */
+.reading-page {
+    max-width: 900px;
+}
+
+.reading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.reading-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reading-item img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.reading-tbc {
+    font-size: 1rem;
+    color: #999;
+    font-style: italic;
+    margin-bottom: 3rem;
+}
+
+.reading-shop-link {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.reading-shop-link p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.reading-shop-link a {
+    color: #333;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.reading-shop-link a:hover {
+    color: #666;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-btn:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
+}
+
+/* Shop Page Responsive */
+@media (max-width: 960px) {
+    .shop-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .chat-panel {
+        position: static;
+        order: -1;
+        height: 300px;
+    }
+    
+    .products-grid-two-col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .products-grid-two-col {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-image-wrapper {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-box {
         padding: 1.5rem;
     }
 }
