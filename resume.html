@@ -28,189 +28,293 @@
         </div>
     </nav>
 
-    <main class="container resume-page">
+    <main class="container resume-chat-page">
         <h1 class="page-title">Resume</h1>
+        <p class="rc-subtitle">Click any card to learn more, or ask a question below.</p>
 
-        <section class="resume-section">
-            <h2 class="resume-section-title">Professional Experience</h2>
-            
-            <div class="resume-item">
-                <div class="resume-item-header">
-                    <h3>Founding Member & Applied AI Developer</h3>
-                    <span class="date">June 2024 - Present</span>
+        <!-- Experience Cards -->
+        <div class="rc-section-label">Experience</div>
+        <div class="rc-cards">
+            <button class="rc-card" onclick="showCard('zenith')">
+                <div class="rc-card-top">
+                    <span class="rc-card-title">Zen Trading</span>
+                    <span class="rc-card-date">2024 – Present</span>
                 </div>
-                <div class="resume-item-header">
-                    <div class="resume-item-org">Zenith</div>
-                    <span class="date">San Francisco, CA</span>
+                <div class="rc-card-role">Founder & Applied AI Developer</div>
+                <div class="rc-card-loc">San Francisco, CA</div>
+            </button>
+            <button class="rc-card" onclick="showCard('fedml')">
+                <div class="rc-card-top">
+                    <span class="rc-card-title">FedML / TensorOpera AI</span>
+                    <span class="rc-card-date">2022 – 2024</span>
                 </div>
-                <p class="resume-summary">AI-native quantamental analytic agent</p>
-                <ul class="resume-list">
-                    <li>Built <a href="https://github.com/Yvette-0508/financial-deep-research" target="_blank">Financial Deep Research Agent</a>: tool-calling research system integrating Postgres (portfolio), Neo4j (supply chain graph), Qdrant+Voyage finance embeddings (report retrieval), Redis caching, and Exa web intelligence</li>
-                    <li>Shipped difficulty-tiered evaluation harness to prevent regressions in tool selection, entity grounding, numeric accuracy, and hallucination rate</li>
-                    <li>Built <a href="https://github.com/Yvette-0508/HedgeLLM" target="_blank">HedgeLLM</a>: LLM fine-tuned via SFT/RL for delta-neutral hedging; computed Greeks via Black-Scholes across 10M+ daily data points; achieved 85% action accuracy</li>
-                    <li>Implemented PPO-based RL environment achieving 1.8 Sharpe ratio; backtested across 5 years with &lt;5% max drawdown</li>
-                    <li>Maintained 95%+ days within ±10 delta of neutral target with multi-component reward function (P&L, delta penalty, transaction costs)</li>
-                </ul>
+                <div class="rc-card-role">Founding Product Manager</div>
+                <div class="rc-card-loc">Palo Alto, CA</div>
+            </button>
+            <button class="rc-card" onclick="showCard('alibaba')">
+                <div class="rc-card-top">
+                    <span class="rc-card-title">Alibaba Cloud PAI</span>
+                    <span class="rc-card-date">2021 – 2022</span>
+                </div>
+                <div class="rc-card-role">AI Product Manager</div>
+                <div class="rc-card-loc">Beijing, China</div>
+            </button>
+            <button class="rc-card" onclick="showCard('tencent')">
+                <div class="rc-card-top">
+                    <span class="rc-card-title">Tencent CV Lab</span>
+                    <span class="rc-card-date">2021</span>
+                </div>
+                <div class="rc-card-role">Software Engineer Intern</div>
+                <div class="rc-card-loc">Shenzhen, China</div>
+            </button>
+        </div>
+
+        <!-- Education Cards -->
+        <div class="rc-section-label">Education</div>
+        <div class="rc-cards">
+            <button class="rc-card" onclick="showCard('cmu')">
+                <div class="rc-card-top">
+                    <span class="rc-card-title">Carnegie Mellon University</span>
+                    <span class="rc-card-date">2019 – 2021</span>
+                </div>
+                <div class="rc-card-role">MS in Information Technology</div>
+                <div class="rc-card-loc">Pittsburgh, PA</div>
+            </button>
+            <button class="rc-card" onclick="showCard('qmul')">
+                <div class="rc-card-top">
+                    <span class="rc-card-title">Queen Mary / BUPT</span>
+                    <span class="rc-card-date">2015 – 2019</span>
+                </div>
+                <div class="rc-card-role">BE in Intelligent Science & Technology</div>
+                <div class="rc-card-loc">London, UK & Beijing, China</div>
+            </button>
+        </div>
+
+        <!-- Skills Cards -->
+        <div class="rc-section-label">Skills</div>
+        <div class="rc-cards rc-cards-skills">
+            <button class="rc-card rc-card-sm" onclick="showCard('ai')">AI/ML & Agents</button>
+            <button class="rc-card rc-card-sm" onclick="showCard('quant')">Quantitative Finance</button>
+            <button class="rc-card rc-card-sm" onclick="showCard('pm')">Product Management</button>
+            <button class="rc-card rc-card-sm" onclick="showCard('programming')">Programming & Data</button>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="rc-chat">
+            <div class="rc-messages" id="rc-messages">
+                <div class="rc-msg rc-bot">Hi! I'm Yan's resume assistant. Click a card above or ask me anything about her experience, skills, or background.</div>
             </div>
-
-            <div class="resume-item">
-                <div class="resume-item-header">
-                    <h3>Founding Product Manager</h3>
-                    <span class="date">2022 - 2024</span>
-                </div>
-                <div class="resume-item-header">
-                    <div class="resume-item-org">FedML / TensorOpera AI</div>
-                    <span class="date">Palo Alto, CA</span>
-                </div>
-                <p class="resume-summary">Product development from research-incubated Federated Learning open-source framework to production Generative AI platform.</p>
-                <ul class="resume-list">
-                    <li>Designed 3 product tiers (cloud-hosted, on-premise, hybrid) and GPU pricing for 6 types (A100, H100, T4, L4, RTX 4090, V100); enabled 25+ enterprise customers contributing to 40% of revenue and $500K+ annual compute revenue at 35% gross margin</li>
-                    <li>Shipped 12+ major features across MLOps, Scheduler, and Compute layers with 8 engineers; reduced model deployment time from 4 hours to 15 minutes through streamlined provisioning workflow</li>
-                    <li>Led AI Agent platform from PRD to GA in 10 weeks with 4 engineers; launched beta to 150+ users, iterated through 3 versions, achieved 500+ agent deployments in first quarter</li>
-                    <li>Scaled Model Hub to 30+ open-source models (Llama 2/3, Mistral, Qwen, Falcon, MPT) with &lt;72-hour integration turnaround; served 10K+ daily inference requests at peak</li>
-                </ul>
+            <div class="rc-input-row">
+                <input type="text" id="rc-input" class="rc-input" placeholder="Ask about my experience..." autocomplete="off">
+                <button id="rc-send" class="rc-send" aria-label="Send">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
             </div>
-
-            <div class="resume-item">
-                <div class="resume-item-header">
-                    <h3>AI Product Manager</h3>
-                    <span class="date">2021 - 2022</span>
-                </div>
-                <div class="resume-item-header">
-                    <div class="resume-item-org">Alibaba Cloud PAI (Platform for AI)</div>
-                    <span class="date">Beijing, China</span>
-                </div>
-                <p class="resume-summary">PAI (Platform for AI) powering Qwen model training, deployment, and inference at scale.</p>
-                <ul class="resume-list">
-                    <li>Pioneered the Federated Learning (FL) Privacy module; drove adoption via 10+ PoCs, converting pilots to paid contracts; secured national security compliance approvals, unlocking highly regulated markets</li>
-                    <li>Led launch of the EAS high-availability module (Blue-Green/Canary deployment, auto-scaling, heterogeneous resource support), achieving 99.9% uptime SLA for MLOps users</li>
-                    <li>Developed EAS pricing model and billing logic, linking consumption metrics to customer value; improved monetization efficiency and accelerated platform revenue growth</li>
-                </ul>
-            </div>
-
-            <div class="resume-item">
-                <div class="resume-item-header">
-                    <h3>Software Engineer Intern</h3>
-                    <span class="date">2021</span>
-                </div>
-                <div class="resume-item-header">
-                    <div class="resume-item-org">Tencent CV Lab</div>
-                    <span class="date">Shenzhen, China</span>
-                </div>
-                <ul class="resume-list">
-                    <li>Engineered CV inference pipeline for ultra-small instrument defect detection (80→25ms latency, 40 FPS on edge); led MLOps deployment and A/B validation ensuring &gt;95% F1 score and reducing model drift by 40%</li>
-                    <li>Led MLOps deployment and A/B validation of researcher-developed models, ensuring production quality standards (&gt;95% F1 score); implemented a validation framework that reduced post-deployment model drift by 40%</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="resume-section">
-            <h2 class="resume-section-title">Education</h2>
-            <div class="resume-item">
-                <div class="resume-item-header">
-                    <h3>Master of Science in Information Technology</h3>
-                    <span class="date">2019-2021</span>
-                </div>
-                <div class="resume-item-header">
-                    <div class="resume-item-org">Carnegie Mellon University</div>
-                    <span class="date">Pittsburgh, PA</span>
-                </div>
-                <ul class="resume-list">
-                    <li>Focus on Software Engineering, Data Analytics, and Cloud Computing</li>
-                </ul>
-            </div>
-
-            <div class="resume-item">
-                <div class="resume-item-header">
-                    <h3>Bachelor of Engineering in Intelligent Science and Technology</h3>
-                    <span class="date">2015-2019</span>
-                </div>
-                <div class="resume-item-header">
-                    <div class="resume-item-org"><a href="https://www.qmul.ac.uk/eecs/china/" target="_blank" rel="noopener noreferrer">Joint Program of Queen Mary University of London & BUPT</a></div>
-                    <span class="date">London, UK & Beijing, China</span>
-                </div>
-                <ul class="resume-list">
-                    <li>Strong foundation in computer science and engineering principles</li>
-                    <li>Intersection of intelligent system, cryptography, and privacy related topics</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="resume-section">
-            <h2 class="resume-section-title">Achievements</h2>
-            <ul class="resume-list">
-                <li>Microsoft Azure Startup Program — Received $10,000+ in cloud credits and resources to support AI/ML infrastructure development</li>
-                <li>Perplexity AI Pre-IPO Investment — Participated in pre-IPO funding round as an early investor</li>
-            </ul>
-        </section>
-
-        <section class="resume-section">
-            <h2 class="resume-section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming & Data</h3>
-                    <ul class="resume-list">
-                        <li>Python: pandas, numpy, scikit-learn, PyTorch</li>
-                        <li>SQL: data analysis, query optimization</li>
-                        <li>API Development & Integration (RESTful, gRPC)</li>
-                        <li>Git, Docker, CI/CD pipelines</li>
-                        <li>Data visualization, Jupyter notebooks</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>AI/ML & Agent Systems</h3>
-                    <ul class="resume-list">
-                        <li>LLM Integration (OpenAI, Anthropic APIs)</li>
-                        <li>AI Agent Architectures & Multi-agent Systems</li>
-                        <li>Prompt Engineering & RAG Systems</li>
-                        <li>Model Evaluation & Testing Frameworks</li>
-                        <li>ML Pipeline Development & Deployment</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Product Management</h3>
-                    <ul class="resume-list">
-                        <li>Product Strategy & Roadmap Development</li>
-                        <li>Stakeholder Management & Communication</li>
-                        <li>Metrics Definition & Analytics (KPIs, A/B Testing)</li>
-                        <li>Cross-functional Team Leadership</li>
-                        <li>Technical Requirements & Documentation</li>
-                        <li>Agile/Scrum Methodologies</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Quantitative Finance</h3>
-                    <ul class="resume-list">
-                        <li>Portfolio Optimization & Risk Management</li>
-                        <li>Options Pricing (Black-Scholes, Greeks)</li>
-                        <li>Factor Models & VaR Analysis</li>
-                        <li>Market Microstructure & Execution</li>
-                        <li>Statistical Modeling & Backtesting</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="resume-section">
-            <h2 class="resume-section-title">Languages</h2>
-            <ul class="resume-list">
-                <li>Chinese (Native)</li>
-                <li>English (Fluent)</li>
-            </ul>
-        </section>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="footer-content">
-            <p>© 2025 Yan Pan. Building intelligent trading systems.</p>
+            <p>&copy; 2025 Yan Pan. Building intelligent trading systems.</p>
             <p class="contact-links">
                 <a href="mailto:yanpan.0508@gmail.com">yanpan.0508@gmail.com</a>
-                <span class="contact-sep">•</span>
+                <span class="contact-sep">&bull;</span>
                 <a href="https://github.com/Yvette-0508" target="_blank" rel="noopener noreferrer">Git</a>
-                <span class="contact-sep">•</span>
+                <span class="contact-sep">&bull;</span>
                 <a href="https://www.linkedin.com/in/yvette-pan-488247173/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </p>
         </div>
     </footer>
+
+    <script>
+    // ── Card Descriptions ────────────────────────────────────────────
+    const cardInfo = {
+        zenith: "Zen Trading (June 2024 – Present) — Founder & Applied AI Developer, San Francisco\n\nBuilding an AI-native quantamental analytic agent:\n\n• Financial Deep Research Agent: tool-calling system integrating Postgres, Neo4j, Qdrant+Voyage finance embeddings, Redis caching, and Exa web intelligence\n• Difficulty-tiered evaluation harness for tool selection, entity grounding, numeric accuracy, and hallucination prevention\n• HedgeLLM: Fine-tuned LLM via SFT/RL for delta-neutral hedging — computed Greeks via Black-Scholes across 10M+ data points, 85% action accuracy\n• PPO-based RL environment: 1.8 Sharpe ratio, <5% max drawdown over 5-year backtest\n• 95%+ days within ±10 delta of neutral target with multi-component reward function",
+        fedml: "FedML / TensorOpera AI (2022 – 2024) — Founding Product Manager, Palo Alto\n\nGrew from research-incubated Federated Learning framework to production GenAI platform:\n\n• Designed 3 product tiers and GPU pricing for 6 types (A100, H100, T4, L4, RTX 4090, V100)\n• 25+ enterprise customers, $500K+ annual compute revenue at 35% gross margin\n• Shipped 12+ major features with 8 engineers; reduced deployment from 4 hours to 15 minutes\n• Led AI Agent platform from PRD to GA in 10 weeks — 500+ agent deployments in Q1\n• Scaled Model Hub to 30+ models (Llama 2/3, Mistral, Qwen, Falcon, MPT), 10K+ daily inference requests",
+        alibaba: "Alibaba Cloud PAI (2021 – 2022) — AI Product Manager, Beijing\n\nPAI (Platform for AI) powering Qwen model training, deployment, and inference at scale:\n\n• Pioneered Federated Learning Privacy module; drove adoption via 10+ PoCs converting pilots to paid contracts\n• Secured national security compliance approvals, unlocking highly regulated markets\n• Led EAS high-availability module launch (Blue-Green/Canary deployment, auto-scaling) — 99.9% uptime SLA\n• Developed EAS pricing model and billing logic for monetization efficiency",
+        tencent: "Tencent CV Lab (2021) — Software Engineer Intern, Shenzhen\n\n• Engineered CV inference pipeline for ultra-small instrument defect detection (80→25ms latency, 40 FPS on edge)\n• Led MLOps deployment and A/B validation ensuring >95% F1 score\n• Implemented validation framework that reduced post-deployment model drift by 40%",
+        cmu: "Carnegie Mellon University (2019 – 2021)\nMaster of Science in Information Technology, Pittsburgh, PA\n\nFocus on Software Engineering, Data Analytics, and Cloud Computing.",
+        qmul: "Queen Mary University of London & BUPT Joint Program (2015 – 2019)\nBachelor of Engineering in Intelligent Science and Technology\nLondon, UK & Beijing, China\n\nStrong foundation in computer science, intelligent systems, cryptography, and privacy.",
+        ai: "AI/ML & Agent Systems:\n\n• LLM Integration (OpenAI, Anthropic APIs)\n• AI Agent Architectures & Multi-agent Systems\n• Prompt Engineering & RAG Systems (Qdrant, Voyage, Exa)\n• Knowledge Graphs (Neo4j)\n• Model Evaluation & Testing Frameworks\n• ML Pipeline Development & Deployment\n• Fine-tuning: SFT & Reinforcement Learning (PPO)",
+        quant: "Quantitative Finance:\n\n• Portfolio Optimization & Risk Management\n• Options Pricing (Black-Scholes, Greeks)\n• Factor Models & VaR Analysis\n• Market Microstructure & Execution\n• Statistical Modeling & Backtesting\n• Delta-neutral hedging with RL (1.8 Sharpe, <5% max drawdown)",
+        pm: "Product Management:\n\n• Product Strategy & Roadmap Development\n• Stakeholder Management & Communication\n• Metrics Definition & Analytics (KPIs, A/B Testing)\n• Cross-functional Team Leadership\n• Technical Requirements & Documentation\n• Agile/Scrum Methodologies\n• GPU pricing, billing logic, and go-to-market",
+        programming: "Programming & Data:\n\n• Python: pandas, numpy, scikit-learn, PyTorch\n• SQL: data analysis, query optimization\n• API Development & Integration (RESTful, gRPC)\n• Git, Docker, CI/CD pipelines\n• Data visualization, Jupyter notebooks\n• Languages: Chinese (Native), English (Fluent)",
+    };
+
+    // ── Chatbot Knowledge Base ───────────────────────────────────────
+    const knowledgeBase = [
+        {
+            keywords: ['current', 'now', 'today', 'present', 'what do you do', 'role', 'job', 'working on'],
+            answer: "Currently, Yan is a Founder & Applied AI Developer at Zen Trading in San Francisco (since June 2024). She builds AI-native quantamental analytic agents — including a Financial Deep Research Agent and HedgeLLM, a fine-tuned LLM for delta-neutral hedging achieving 85% action accuracy and 1.8 Sharpe ratio."
+        },
+        {
+            keywords: ['zen trading', 'zenith', 'founding member', 'applied ai'],
+            answer: cardInfo.zenith
+        },
+        {
+            keywords: ['fedml', 'tensoropera', 'palo alto'],
+            answer: cardInfo.fedml
+        },
+        {
+            keywords: ['alibaba', 'cloud', 'pai', 'beijing', 'qwen'],
+            answer: cardInfo.alibaba
+        },
+        {
+            keywords: ['tencent', 'intern', 'cv lab', 'computer vision', 'shenzhen'],
+            answer: cardInfo.tencent
+        },
+        {
+            keywords: ['education', 'school', 'university', 'degree', 'study', 'studied', 'college', 'master', 'bachelor'],
+            answer: "Yan's education:\n\n• MS in Information Technology — Carnegie Mellon University (2019–2021). Focus: Software Engineering, Data Analytics, Cloud Computing.\n• BE in Intelligent Science & Technology — Queen Mary University of London & BUPT Joint Program (2015–2019). Foundation in CS, intelligent systems, cryptography, and privacy."
+        },
+        {
+            keywords: ['cmu', 'carnegie', 'mellon', 'pittsburgh'],
+            answer: cardInfo.cmu
+        },
+        {
+            keywords: ['queen mary', 'bupt', 'london', 'undergraduate'],
+            answer: cardInfo.qmul
+        },
+        {
+            keywords: ['skill', 'technology', 'tech stack', 'tools', 'what can', 'proficient', 'expertise'],
+            answer: "Yan's skills span four areas:\n\nProgramming & Data — Python (pandas, numpy, scikit-learn, PyTorch), SQL, REST/gRPC, Git, Docker, CI/CD\n\nAI/ML & Agents — LLM integration, agent architectures, RAG, prompt engineering, knowledge graphs, model evaluation\n\nProduct Management — Strategy, roadmaps, KPIs, A/B testing, cross-functional leadership, Agile/Scrum\n\nQuantitative Finance — Portfolio optimization, options pricing (Black-Scholes, Greeks), VaR, backtesting, RL-based hedging"
+        },
+        {
+            keywords: ['ai', 'agent', 'agentic', 'multi-agent', 'tool calling', 'llm agent'],
+            answer: "Yan's AI agent experience:\n\n• Built Financial Deep Research Agent at Zen Trading — tool-calling system with Postgres, Neo4j, Qdrant+Voyage, Redis, Exa\n• Difficulty-tiered evaluation harness for tool selection, entity grounding, numeric accuracy, hallucination prevention\n• Led AI Agent platform from PRD to GA in 10 weeks at FedML — 500+ agent deployments in Q1\n• Expertise in LLM integration (OpenAI, Anthropic), prompt engineering, RAG systems"
+        },
+        {
+            keywords: ['quant', 'finance', 'trading', 'portfolio', 'options', 'hedging', 'greek', 'black-scholes', 'sharpe'],
+            answer: "Yan's quantitative finance work at Zen Trading:\n\n• HedgeLLM: fine-tuned via SFT/RL for delta-neutral hedging across 10M+ daily data points — 85% accuracy\n• PPO-based RL: 1.8 Sharpe ratio, <5% max drawdown over 5-year backtest\n• 95%+ days within ±10 delta of neutral target\n• Skills: portfolio optimization, options pricing (Black-Scholes, Greeks), factor models, VaR, backtesting"
+        },
+        {
+            keywords: ['product', 'management', 'pm', 'product manager', 'roadmap', 'strategy'],
+            answer: "Yan's PM experience:\n\nFedML — Designed 3 product tiers and GPU pricing. 25+ enterprise customers, $500K+ revenue. Shipped 12+ features. Led Agent platform PRD to GA in 10 weeks.\n\nAlibaba Cloud — Pioneered FL Privacy module. Launched EAS high-availability (99.9% uptime SLA). Built pricing model and billing logic.\n\nCore skills: strategy, stakeholder management, KPIs, A/B testing, Agile/Scrum."
+        },
+        {
+            keywords: ['python', 'programming', 'code', 'pytorch', 'pandas', 'numpy'],
+            answer: cardInfo.programming
+        },
+        {
+            keywords: ['rag', 'retrieval', 'vector', 'embedding', 'qdrant', 'voyage'],
+            answer: "Yan built RAG systems at Zen Trading using Qdrant + Voyage AI finance embeddings (voyage-finance-2). The Financial Deep Research Agent integrates semantic retrieval, Redis caching, and Exa web intelligence for real-time news and filings."
+        },
+        {
+            keywords: ['neo4j', 'graph', 'knowledge graph', 'supply chain'],
+            answer: "Yan uses Neo4j at Zen Trading for supply chain graph analysis — mapping company networks, supplier-customer relationships, and sector dependencies for graph-based investment reasoning."
+        },
+        {
+            keywords: ['reinforcement', 'rl', 'ppo', 'reward', 'sft', 'fine-tun'],
+            answer: "Yan's RL & fine-tuning work at Zen Trading:\n\n• HedgeLLM: SFT then RL for delta-neutral hedging\n• PPO with multi-component reward: P&L, delta penalty, transaction costs\n• Results: 1.8 Sharpe, <5% max drawdown, 95%+ days within ±10 delta\n• Greeks computed via Black-Scholes across 10M+ daily data points"
+        },
+        {
+            keywords: ['mlops', 'deploy', 'devops', 'docker', 'ci/cd', 'infrastructure'],
+            answer: "Yan's MLOps experience:\n\n• FedML: Reduced deployment from 4 hours to 15 minutes. Scaled Model Hub to 30+ models, 10K+ daily requests.\n• Alibaba: Led EAS high-availability module (Blue-Green/Canary, auto-scaling) — 99.9% uptime SLA.\n• Tools: Git, Docker, CI/CD, ML pipeline development."
+        },
+        {
+            keywords: ['achievement', 'award', 'recognition', 'invest'],
+            answer: "Yan's achievements:\n\n• Microsoft Azure Startup Program — $10,000+ in cloud credits for AI/ML infrastructure\n• Perplexity AI Pre-IPO Investment — Participated as an early investor"
+        },
+        {
+            keywords: ['contact', 'email', 'reach', 'hire', 'connect'],
+            answer: "Reach Yan at:\n\n• Email: yanpan.0508@gmail.com\n• GitHub: github.com/Yvette-0508\n• LinkedIn: linkedin.com/in/yvette-pan-488247173\n\nBased in the Bay Area, California."
+        },
+        {
+            keywords: ['experience', 'years', 'how long', 'background', 'summary', 'overview', 'tell me about', 'who are you', 'introduce'],
+            answer: "Yan Pan — AI developer focused on quantitative finance systems and AI agent architectures. 5+ years of experience:\n\n• Zen Trading (2024–now): Founding AI Developer — quantamental agents, HedgeLLM\n• FedML (2022–2024): Founding PM — GenAI platform, $500K+ revenue\n• Alibaba Cloud PAI (2021–2022): AI PM — Qwen platform, FL privacy\n• Tencent CV Lab (2021): SWE Intern — CV pipeline optimization\n\nEducation: MS from CMU, BE from Queen Mary/BUPT"
+        },
+        {
+            keywords: ['location', 'where', 'based', 'live', 'bay area', 'california', 'visa', 'sponsorship'],
+            answer: "Yan is based in the Bay Area, California. No H-1B sponsorship required."
+        },
+        {
+            keywords: ['language', 'speak', 'chinese', 'english'],
+            answer: "Chinese (Native) and English (Fluent)."
+        },
+        {
+            keywords: ['federated', 'learning', 'privacy', 'fl'],
+            answer: "Federated Learning experience:\n\n• Alibaba Cloud: Pioneered FL Privacy module, 10+ PoCs converting to paid contracts, national security compliance\n• FedML: Grew from research FL framework to production GenAI platform"
+        },
+        {
+            keywords: ['gpu', 'pricing', 'compute', 'a100', 'h100', 'model hub'],
+            answer: "At FedML, Yan designed GPU pricing for 6 types (A100, H100, T4, L4, RTX 4090, V100) across 3 tiers. 25+ enterprise customers, $500K+ annual compute revenue at 35% margin. Scaled Model Hub to 30+ models serving 10K+ daily requests."
+        },
+    ];
+
+    // ── DOM ───────────────────────────────────────────────────────────
+    const messagesEl = document.getElementById('rc-messages');
+    const inputEl = document.getElementById('rc-input');
+    const sendBtn = document.getElementById('rc-send');
+
+    function scrollChat() {
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function addUserMessage(text) {
+        const div = document.createElement('div');
+        div.className = 'rc-msg rc-user';
+        div.textContent = text;
+        messagesEl.appendChild(div);
+        scrollChat();
+    }
+
+    function addBotMessage(text) {
+        const div = document.createElement('div');
+        div.className = 'rc-msg rc-bot';
+        messagesEl.appendChild(div);
+        scrollChat();
+
+        let i = 0;
+        const speed = 8;
+        (function type() {
+            if (i < text.length) {
+                div.textContent += text.charAt(i);
+                i++;
+                scrollChat();
+                setTimeout(type, speed);
+            }
+        })();
+    }
+
+    function showCard(id) {
+        const info = cardInfo[id];
+        if (info) addBotMessage(info);
+    }
+
+    function findAnswer(query) {
+        const q = query.toLowerCase();
+        let bestScore = 0;
+        let bestAnswer = null;
+
+        for (const entry of knowledgeBase) {
+            let score = 0;
+            for (const kw of entry.keywords) {
+                if (q.includes(kw)) score += kw.length;
+            }
+            if (score > bestScore) {
+                bestScore = score;
+                bestAnswer = entry.answer;
+            }
+        }
+
+        return bestAnswer || "I don't have specific info on that. Try asking about Yan's current role, skills, education, AI agent experience, quant finance background, or specific companies (Zen Trading, FedML, Alibaba, Tencent).";
+    }
+
+    function ask(text) {
+        addUserMessage(text);
+        setTimeout(() => addBotMessage(findAnswer(text)), 300);
+    }
+
+    sendBtn.addEventListener('click', () => {
+        const text = inputEl.value.trim();
+        if (!text) return;
+        inputEl.value = '';
+        ask(text);
+    });
+
+    inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') sendBtn.click();
+    });
+    </script>
 </body>
 </html>

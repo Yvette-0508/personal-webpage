@@ -800,6 +800,218 @@ body {
     }
 }
 
+/* Resume Chat Page */
+.resume-chat-page {
+    max-width: 900px;
+}
+
+.rc-subtitle {
+    font-size: 1rem;
+    color: #999;
+    margin-top: -2rem;
+    margin-bottom: 2.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Section Labels */
+.rc-section-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 0.75rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Cards Grid */
+.rc-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.rc-cards-skills {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.rc-card {
+    display: block;
+    text-align: left;
+    padding: 1rem 1.2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.rc-card:hover {
+    border-color: #bbb;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+}
+
+.rc-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+}
+
+.rc-card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.rc-card-date {
+    font-size: 0.78rem;
+    color: #999;
+    white-space: nowrap;
+}
+
+.rc-card-role {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.15rem;
+}
+
+.rc-card-loc {
+    font-size: 0.78rem;
+    color: #aaa;
+}
+
+/* Small skill cards */
+.rc-card-sm {
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Resume Chat */
+.rc-chat {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.rc-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-right: 0.5rem;
+}
+
+.rc-msg {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    white-space: pre-line;
+}
+
+.rc-bot {
+    background: #fff;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    border: 1px solid #e8e8e8;
+}
+
+.rc-user {
+    background: #1a1a1a;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.rc-input-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.rc-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    font-size: 0.92rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.rc-input:focus {
+    border-color: #999;
+}
+
+.rc-input::placeholder {
+    color: #aaa;
+}
+
+.rc-send {
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.rc-send:hover {
+    background: #444;
+}
+
+@media (max-width: 768px) {
+    .rc-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .rc-cards-skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rc-msg {
+        max-width: 92%;
+        font-size: 0.88rem;
+    }
+
+    .rc-subtitle {
+        margin-top: -1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .rc-cards-skills {
+        grid-template-columns: 1fr;
+    }
+
+    .rc-card {
+        padding: 0.8rem 1rem;
+    }
+}
+
 /* Shop Page Styles */
 .shop-page {
     max-width: 900px;
