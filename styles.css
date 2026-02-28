@@ -824,77 +824,41 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Cards List (Accordion) */
-.rc-cards-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 2.5rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.rc-cards-skills-list {
+/* Cards Grid */
+.rc-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    border: none;
     gap: 0.75rem;
-    border-radius: 0;
-    overflow: visible;
+    margin-bottom: 2rem;
 }
 
-.rc-cards-skills-list .rc-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+.rc-cards-skills {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .rc-card {
+    display: block;
+    text-align: left;
+    padding: 1rem 1.2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     background: #fff;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.rc-card:last-child {
-    border-bottom: none;
 }
 
 .rc-card:hover {
-    background: #fafafa;
-}
-
-.rc-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.2rem;
-}
-
-.rc-card-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.rc-card-arrow {
-    font-size: 1.2rem;
-    color: #999;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-    margin-left: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.rc-card-open .rc-card-arrow {
-    transform: rotate(45deg);
+    border-color: #bbb;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
 }
 
 .rc-card-top {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
 }
 
 .rc-card-title {
@@ -907,13 +871,12 @@ body {
     font-size: 0.78rem;
     color: #999;
     white-space: nowrap;
-    margin-left: 1rem;
 }
 
 .rc-card-role {
     font-size: 0.85rem;
     color: #555;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.15rem;
 }
 
 .rc-card-loc {
@@ -921,68 +884,13 @@ body {
     color: #aaa;
 }
 
-/* Card Expandable Detail */
-.rc-card-detail {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    padding: 0 1.2rem;
-    border-top: none;
-}
-
-.rc-card-open .rc-card-detail {
-    max-height: 600px;
-    padding: 0 1.2rem 1.2rem;
-    border-top: 1px solid #f0f0f0;
-}
-
-.rc-card-detail .rc-card-summary {
-    font-size: 0.88rem;
-    color: #666;
-    font-style: italic;
-    margin-bottom: 0.75rem;
-    margin-top: 0.75rem;
-}
-
-.rc-card-detail ul {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
-}
-
-.rc-card-detail li {
-    padding-left: 1.2rem;
-    margin-bottom: 0.5rem;
-    position: relative;
-    line-height: 1.6;
-    color: #333;
-    font-size: 0.88rem;
-}
-
-.rc-card-detail li:before {
-    content: "\2022";
-    position: absolute;
-    left: 0;
-    color: #bbb;
-}
-
-.rc-card-detail a {
-    color: #333;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-.rc-card-detail a:hover {
-    color: #666;
-}
-
 /* Small skill cards */
-.rc-card-sm .rc-card-header {
-    padding: 0.75rem 1rem;
-}
-
-.rc-card-sm .rc-card-title {
-    font-size: 0.88rem;
+.rc-card-sm {
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #555;
 }
 
 /* Resume Chat */
@@ -1076,8 +984,12 @@ body {
 }
 
 @media (max-width: 768px) {
-    .rc-cards-skills-list {
+    .rc-cards {
         grid-template-columns: 1fr;
+    }
+
+    .rc-cards-skills {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .rc-msg {
@@ -1088,14 +1000,15 @@ body {
     .rc-subtitle {
         margin-top: -1.5rem;
     }
+}
 
-    .rc-card-top {
-        flex-direction: column;
-        gap: 0.15rem;
+@media (max-width: 480px) {
+    .rc-cards-skills {
+        grid-template-columns: 1fr;
     }
 
-    .rc-card-date {
-        margin-left: 0;
+    .rc-card {
+        padding: 0.8rem 1rem;
     }
 }
 
