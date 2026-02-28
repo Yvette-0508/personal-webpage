@@ -800,6 +800,208 @@ body {
     }
 }
 
+/* Resume Chat Page */
+.resume-chat-page {
+    max-width: 900px;
+}
+
+.rc-subtitle {
+    font-size: 1rem;
+    color: #999;
+    margin-top: -2rem;
+    margin-bottom: 2.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Knowledge Graph */
+.kg-container {
+    margin-bottom: 3rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+#knowledge-graph {
+    width: 100%;
+    height: 420px;
+}
+
+.kg-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid #e0e0e0;
+    background: #fff;
+    flex-wrap: wrap;
+}
+
+.kg-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.kg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Resume Chat */
+.rc-chat {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.rc-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-right: 0.5rem;
+}
+
+.rc-msg {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    white-space: pre-line;
+}
+
+.rc-bot {
+    background: #f5f5f5;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.rc-user {
+    background: #1a1a1a;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.rc-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.rc-chip {
+    padding: 0.4rem 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: #fff;
+    color: #555;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.rc-chip:hover {
+    background: #f5f5f5;
+    border-color: #bbb;
+    color: #333;
+}
+
+.rc-input-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.rc-input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    font-size: 0.92rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fafafa;
+}
+
+.rc-input:focus {
+    border-color: #999;
+    background: #fff;
+}
+
+.rc-input::placeholder {
+    color: #aaa;
+}
+
+.rc-send {
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.rc-send:hover {
+    background: #444;
+}
+
+@media (max-width: 768px) {
+    #knowledge-graph {
+        height: 320px;
+    }
+
+    .rc-msg {
+        max-width: 92%;
+        font-size: 0.88rem;
+    }
+
+    .kg-legend {
+        gap: 1rem;
+    }
+
+    .rc-subtitle {
+        margin-top: -1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #knowledge-graph {
+        height: 260px;
+    }
+
+    .kg-legend {
+        gap: 0.75rem;
+        padding: 0.6rem;
+    }
+
+    .kg-legend-item {
+        font-size: 0.72rem;
+    }
+}
+
 /* Shop Page Styles */
 .shop-page {
     max-width: 900px;
