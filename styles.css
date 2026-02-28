@@ -827,7 +827,7 @@ body {
 /* Cards Grid */
 .rc-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 0.75rem;
     margin-bottom: 2rem;
 }
@@ -838,14 +838,20 @@ body {
 
 .rc-card {
     display: block;
+    width: 100%;
     text-align: left;
     padding: 1rem 1.2rem;
+    margin: 0;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     background: #fff;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: inherit;
+    line-height: 1.5;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .rc-card:hover {
