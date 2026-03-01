@@ -306,6 +306,28 @@
         })();
     }
 
+    function formatDetail(text) {
+        const lines = text.split('\n');
+        let html = '';
+        let inList = false;
+        for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) {
+                if (inList) { html += '</ul>'; inList = false; }
+                continue;
+            }
+            if (trimmed.startsWith('•')) {
+                if (!inList) { html += '<ul>'; inList = true; }
+                html += '<li>' + trimmed.slice(1).trim() + '</li>';
+            } else {
+                if (inList) { html += '</ul>'; inList = false; }
+                html += '<p>' + trimmed + '</p>';
+            }
+        }
+        if (inList) html += '</ul>';
+        return html;
+    }
+
     function toggleCard(btn, id) {
         const wrapper = btn.parentElement;
         const detail = wrapper.querySelector('.rc-card-detail');
@@ -314,7 +336,7 @@
         // Close all open cards
         document.querySelectorAll('.rc-card-wrapper.rc-card-open').forEach(w => {
             w.classList.remove('rc-card-open');
-            w.querySelector('.rc-card-detail').textContent = '';
+            w.querySelector('.rc-card-detail').innerHTML = '';
         });
 
         // Toggle this one open (if it was closed)
@@ -324,7 +346,7 @@
             // Strip the first line (title/header) since the card already shows it
             const lines = info.split('\n');
             const body = lines.slice(1).join('\n').replace(/^\n+/, '');
-            detail.textContent = body;
+            detail.innerHTML = formatDetail(body);
             wrapper.classList.add('rc-card-open');
         }
     }
