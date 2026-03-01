@@ -30,73 +30,103 @@
 
     <main class="container resume-chat-page">
         <h1 class="page-title">Resume</h1>
-        <p class="rc-subtitle">Click any card to learn more, or ask a question below.</p>
+        <p class="rc-subtitle">Click any card to expand details, or ask a question below.</p>
 
         <!-- Experience Cards -->
         <div class="rc-section-label">Experience</div>
         <div class="rc-cards">
-            <button class="rc-card" onclick="showCard('zenith')">
-                <div class="rc-card-top">
-                    <span class="rc-card-title">Zen Trading</span>
-                    <span class="rc-card-date">2024 – Present</span>
-                </div>
-                <div class="rc-card-role">Founder & Applied AI Developer</div>
-                <div class="rc-card-loc">San Francisco, CA</div>
-            </button>
-            <button class="rc-card" onclick="showCard('fedml')">
-                <div class="rc-card-top">
-                    <span class="rc-card-title">FedML / TensorOpera AI</span>
-                    <span class="rc-card-date">2022 – 2024</span>
-                </div>
-                <div class="rc-card-role">Founding Product Manager</div>
-                <div class="rc-card-loc">Palo Alto, CA</div>
-            </button>
-            <button class="rc-card" onclick="showCard('alibaba')">
-                <div class="rc-card-top">
-                    <span class="rc-card-title">Alibaba Cloud PAI</span>
-                    <span class="rc-card-date">2021 – 2022</span>
-                </div>
-                <div class="rc-card-role">AI Product Manager</div>
-                <div class="rc-card-loc">Beijing, China</div>
-            </button>
-            <button class="rc-card" onclick="showCard('tencent')">
-                <div class="rc-card-top">
-                    <span class="rc-card-title">Tencent CV Lab</span>
-                    <span class="rc-card-date">2021</span>
-                </div>
-                <div class="rc-card-role">Software Engineer Intern</div>
-                <div class="rc-card-loc">Shenzhen, China</div>
-            </button>
+            <div class="rc-card-wrapper">
+                <button class="rc-card" onclick="toggleCard(this, 'zenith')">
+                    <div class="rc-card-top">
+                        <span class="rc-card-title">Zen Trading</span>
+                        <span class="rc-card-date">2024 – Present</span>
+                    </div>
+                    <div class="rc-card-role">Founder & Applied AI Developer</div>
+                    <div class="rc-card-loc">San Francisco, CA</div>
+                </button>
+                <div class="rc-card-detail" id="detail-zenith"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card" onclick="toggleCard(this, 'fedml')">
+                    <div class="rc-card-top">
+                        <span class="rc-card-title">FedML / TensorOpera AI</span>
+                        <span class="rc-card-date">2022 – 2024</span>
+                    </div>
+                    <div class="rc-card-role">Founding Product Manager</div>
+                    <div class="rc-card-loc">Palo Alto, CA</div>
+                </button>
+                <div class="rc-card-detail" id="detail-fedml"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card" onclick="toggleCard(this, 'alibaba')">
+                    <div class="rc-card-top">
+                        <span class="rc-card-title">Alibaba Cloud PAI</span>
+                        <span class="rc-card-date">2021 – 2022</span>
+                    </div>
+                    <div class="rc-card-role">AI Product Manager</div>
+                    <div class="rc-card-loc">Beijing, China</div>
+                </button>
+                <div class="rc-card-detail" id="detail-alibaba"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card" onclick="toggleCard(this, 'tencent')">
+                    <div class="rc-card-top">
+                        <span class="rc-card-title">Tencent CV Lab</span>
+                        <span class="rc-card-date">2021</span>
+                    </div>
+                    <div class="rc-card-role">Software Engineer Intern</div>
+                    <div class="rc-card-loc">Shenzhen, China</div>
+                </button>
+                <div class="rc-card-detail" id="detail-tencent"></div>
+            </div>
         </div>
 
         <!-- Education Cards -->
         <div class="rc-section-label">Education</div>
         <div class="rc-cards">
-            <button class="rc-card" onclick="showCard('cmu')">
-                <div class="rc-card-top">
-                    <span class="rc-card-title">Carnegie Mellon University</span>
-                    <span class="rc-card-date">2019 – 2021</span>
-                </div>
-                <div class="rc-card-role">MS in Information Technology</div>
-                <div class="rc-card-loc">Pittsburgh, PA</div>
-            </button>
-            <button class="rc-card" onclick="showCard('qmul')">
-                <div class="rc-card-top">
-                    <span class="rc-card-title">Queen Mary / BUPT</span>
-                    <span class="rc-card-date">2015 – 2019</span>
-                </div>
-                <div class="rc-card-role">BE in Intelligent Science & Technology</div>
-                <div class="rc-card-loc">London, UK & Beijing, China</div>
-            </button>
+            <div class="rc-card-wrapper">
+                <button class="rc-card" onclick="toggleCard(this, 'cmu')">
+                    <div class="rc-card-top">
+                        <span class="rc-card-title">Carnegie Mellon University</span>
+                        <span class="rc-card-date">2019 – 2021</span>
+                    </div>
+                    <div class="rc-card-role">MS in Information Technology</div>
+                    <div class="rc-card-loc">Pittsburgh, PA</div>
+                </button>
+                <div class="rc-card-detail" id="detail-cmu"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card" onclick="toggleCard(this, 'qmul')">
+                    <div class="rc-card-top">
+                        <span class="rc-card-title">Queen Mary / BUPT</span>
+                        <span class="rc-card-date">2015 – 2019</span>
+                    </div>
+                    <div class="rc-card-role">BE in Intelligent Science & Technology</div>
+                    <div class="rc-card-loc">London, UK & Beijing, China</div>
+                </button>
+                <div class="rc-card-detail" id="detail-qmul"></div>
+            </div>
         </div>
 
         <!-- Skills Cards -->
         <div class="rc-section-label">Skills</div>
         <div class="rc-cards rc-cards-skills">
-            <button class="rc-card rc-card-sm" onclick="showCard('ai')">AI/ML & Agents</button>
-            <button class="rc-card rc-card-sm" onclick="showCard('quant')">Quantitative Finance</button>
-            <button class="rc-card rc-card-sm" onclick="showCard('pm')">Product Management</button>
-            <button class="rc-card rc-card-sm" onclick="showCard('programming')">Programming & Data</button>
+            <div class="rc-card-wrapper">
+                <button class="rc-card rc-card-sm" onclick="toggleCard(this, 'ai')">AI/ML & Agents</button>
+                <div class="rc-card-detail" id="detail-ai"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card rc-card-sm" onclick="toggleCard(this, 'quant')">Quantitative Finance</button>
+                <div class="rc-card-detail" id="detail-quant"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card rc-card-sm" onclick="toggleCard(this, 'pm')">Product Management</button>
+                <div class="rc-card-detail" id="detail-pm"></div>
+            </div>
+            <div class="rc-card-wrapper">
+                <button class="rc-card rc-card-sm" onclick="toggleCard(this, 'programming')">Programming & Data</button>
+                <div class="rc-card-detail" id="detail-programming"></div>
+            </div>
         </div>
 
         <!-- Chat Section -->
@@ -276,9 +306,27 @@
         })();
     }
 
-    function showCard(id) {
-        const info = cardInfo[id];
-        if (info) addBotMessage(info);
+    function toggleCard(btn, id) {
+        const wrapper = btn.parentElement;
+        const detail = wrapper.querySelector('.rc-card-detail');
+        const isOpen = wrapper.classList.contains('rc-card-open');
+
+        // Close all open cards
+        document.querySelectorAll('.rc-card-wrapper.rc-card-open').forEach(w => {
+            w.classList.remove('rc-card-open');
+            w.querySelector('.rc-card-detail').textContent = '';
+        });
+
+        // Toggle this one open (if it was closed)
+        if (!isOpen) {
+            const info = cardInfo[id];
+            if (!info) return;
+            // Strip the first line (title/header) since the card already shows it
+            const lines = info.split('\n');
+            const body = lines.slice(1).join('\n').replace(/^\n+/, '');
+            detail.textContent = body;
+            wrapper.classList.add('rc-card-open');
+        }
     }
 
     function findAnswer(query) {
