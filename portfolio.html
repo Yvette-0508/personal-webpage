@@ -47,41 +47,41 @@
                 <h3 class="project-subtitle"><strong>Core Components</strong></h3>
 
                 <div class="project-component">
-                    <h4>PIT-Correct Data Kernel & Feature Library</h4>
+                    <h4>Multi-Factor, ML & RL Strategy Research</h4>
                     <p>
-                        Built a bi-temporal fact store (Parquet + DuckDB + Polars) where every read requires an explicit <code>as_of</code> timestamp, enforced by custom Ruff rules and Pydantic strict types. On top, assembled PIT-safe tradable universes and a five-factor library (value, momentum, quality, low-vol, size), each shipped with IC time series, decile spreads, and bootstrap p-values. Non-linear fusion via XGBoost; deep learning reserved only for 10-K sentiment.
+                        LightGBM-based signal fusion over a multi-factor alpha library (value, momentum, quality, low-vol, cross-sectional microstructure), with RL policies for allocation and execution. Factors are scored by IC, decile spreads, and turnover-adjusted Sharpe. Every strategy is cross-validated on both <code>vectorbt</code> and QuantConnect <code>Lean</code> to eliminate framework-specific artifacts.
                     </p>
                     <div class="tech-highlights">
-                        <span class="tech-tag">Point-in-Time</span>
-                        <span class="tech-tag">Polars/DuckDB</span>
-                        <span class="tech-tag">Factor Library</span>
-                        <span class="tech-tag">XGBoost Fusion</span>
+                        <span class="tech-tag">LightGBM</span>
+                        <span class="tech-tag">Multi-Factor Alpha</span>
+                        <span class="tech-tag">Reinforcement Learning</span>
+                        <span class="tech-tag">vectorbt / Lean</span>
                     </div>
                 </div>
 
                 <div class="project-component">
-                    <h4>Portfolio Construction & Six-Part Validation Engine</h4>
+                    <h4>Zentos CLI — End-to-End Agentic Pipeline</h4>
                     <p>
-                        Signal-to-weights layer with three optimizers (MVO with Ledoit-Wolf shrinkage, Risk Parity, HRP) under position, sector, turnover, and leverage constraints. Built on vectorbt, every strategy must pass a six-part validation gate — walk-forward Purged K-Fold, bootstrap Sharpe distribution, subsample stability, turnover-adjusted Sharpe, Monte Carlo signal scramble, and factor attribution — before promotion. In-sample Sharpe alone never qualifies.
+                        Shipped <strong>Zentos CLI</strong>, an end-to-end agentic pipeline that lets external quantitative researchers and developers submit strategies to the platform without touching infrastructure. Natural-language research intent is compiled into declarative <code>StrategySpec</code> objects; the CLI orchestrates data staging, sandboxed Python execution (Docker, no network, read-only fact copy), the full validation gate, and deployment to live brokers. The goal is to compress the research-to-production loop from weeks to hours while preserving point-in-time safety, reproducibility, and auditability at every step.
                     </p>
                     <div class="tech-highlights">
-                        <span class="tech-tag">cvxpy/HRP</span>
-                        <span class="tech-tag">Walk-Forward</span>
-                        <span class="tech-tag">Bootstrap Sharpe</span>
-                        <span class="tech-tag">Validation Gate</span>
+                        <span class="tech-tag">Zentos CLI</span>
+                        <span class="tech-tag">StrategySpec DSL</span>
+                        <span class="tech-tag">Sandboxed Execution</span>
+                        <span class="tech-tag">Strategy-as-Code</span>
                     </div>
                 </div>
 
                 <div class="project-component">
-                    <h4>Agent-Orchestrated Execution & Drift Monitoring</h4>
+                    <h4>LLM Agents in the ML/DL Strategy Stack</h4>
                     <p>
-                        Unified broker abstraction (Alpaca / IBKR / Binance Testnet) converting target weights into fills, with live-vs-backtest drift detection across returns, turnover, and factor exposures. The LLM layer (Zen CLI, LiteLLM) acts as orchestrator — not oracle — producing declarative <code>StrategySpec</code> objects and sandboxed Python (Docker, no network, read-only fact copy). Agents cannot place orders, mutate the kernel, or bypass validation.
+                        Integrated LLM agents as a productivity layer on top of an otherwise deterministic ML/DL strategy platform, scoped to three production use cases: <em>(1) model routing</em> — selecting between LightGBM, deep-learning, and RL policies based on regime classifiers and factor exposures; <em>(2) factor mining</em> — proposing, implementing, and backtesting candidate alpha formulas under human-in-the-loop review; <em>(3) research assistance</em> — summarizing 10-K and earnings transcripts, surfacing related literature, and drafting strategy post-mortems. Agents orchestrate and propose — all signals, weights, and orders remain under deterministic control.
                     </p>
                     <div class="tech-highlights">
-                        <span class="tech-tag">Multi-Broker</span>
-                        <span class="tech-tag">LiteLLM Agents</span>
-                        <span class="tech-tag">Docker Sandbox</span>
-                        <span class="tech-tag">Drift Attribution</span>
+                        <span class="tech-tag">Model Routing</span>
+                        <span class="tech-tag">Factor Discovery</span>
+                        <span class="tech-tag">Research Copilot</span>
+                        <span class="tech-tag">Human-in-the-Loop</span>
                     </div>
                 </div>
             </div>
