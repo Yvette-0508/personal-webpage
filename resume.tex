@@ -54,13 +54,13 @@
 %------------------------
 \section{Professional Experience}
 
-\textbf{Founder \& AI Developer} \daterange{June 2024 -- Present}\\
+\textbf{Founder \& AI Developer} \daterange{Oct 2024 -- Present}\\
 \textbf{Zen Trading} \location{San Francisco, CA}\\
-\textit{AI-native quant fund, architecting proprietary RAG, fine-tuned LLMs, and RL systems.}
+\textit{AI-native quant fund building an agentic quantamental research and trading platform.}
 \begin{itemize}[leftmargin=*, nosep, itemsep=2pt]
-    \resumeItem{Built \href{https://github.com/Yvette-0508/financial-deep-research}{Financial Deep Research Agent}: tool-calling research system integrating Postgres (portfolio), Neo4j (supply chain graph), Qdrant+Voyage finance embeddings (report retrieval), Redis caching, and Exa web intelligence; shipped difficulty-tiered evaluation harness to prevent regressions in tool selection, numeric accuracy, and hallucination rate}
-    \resumeItem{Built \href{https://github.com/Yvette-0508/HedgeLLM}{HedgeLLM}: LLM fine-tuned via SFT/RL on Tinker API for delta-neutral hedging; computed Greeks via Black-Scholes across 10M+ daily data points; achieved 85\% action accuracy}
-    \resumeItem{Implemented PPO-based RL environment achieving 1.8 Sharpe ratio; backtested across 5 years with <5\% max drawdown and 95\%+ days within $\pm$10 delta of neutral}
+    \resumeItem{Built core research stack around LightGBM-based signal fusion over a multi-factor alpha library (value, momentum, quality, low-vol, cross-sectional microstructure) with RL policies for allocation and execution; cross-validated every strategy on both \texttt{vectorbt} and QuantConnect \texttt{Lean} to enforce backtest rigor and eliminate framework-specific artifacts}
+    \resumeItem{Shipped \textbf{Zentos CLI}, an end-to-end agentic pipeline that compiles natural-language research intent into declarative \texttt{StrategySpec} objects, then orchestrates Docker-sandboxed execution, the full validation gate, and deployment to live brokers --- enabling external quants to submit strategies while preserving point-in-time safety and reproducibility}
+    \resumeItem{Integrated LLM agents as a productivity layer over the deterministic ML/DL stack across three production roles: model routing between LightGBM/DL/RL policies under regime classifiers and factor exposures, factor mining with human-in-the-loop review, and research assistance (10-K / earnings summarization, literature retrieval, strategy post-mortems)}
 \end{itemize}
 
 \vspace{6pt}
