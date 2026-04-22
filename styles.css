@@ -104,6 +104,14 @@ body {
     letter-spacing: 0.02em;
 }
 
+.portfolio-page .section-title {
+    font-size: 1.45rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+}
+
 /* Portfolio Banner */
 .portfolio-banner {
     margin-bottom: 3.5rem;
@@ -572,14 +580,22 @@ body {
     color: #333;
 }
 
+.project-featured .project-title {
+    font-size: 1.9rem;
+}
+
+.project-item .project-title {
+    font-size: 1.3rem;
+}
+
 .project-meta {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     color: #999;
     margin-bottom: 2rem;
 }
 
 .project-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
@@ -591,7 +607,7 @@ body {
 }
 
 .project-description p {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     line-height: 1.75;
     color: #1a1a1a;
     margin-bottom: 1.5rem;
@@ -605,14 +621,14 @@ body {
 }
 
 .project-component h4 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 1rem;
     color: #333;
 }
 
 .project-component p {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     line-height: 1.75;
     color: #2a2a2a;
     margin-bottom: 1.5rem;
@@ -630,7 +646,7 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 3px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #666;
 }
 
@@ -660,7 +676,7 @@ body {
 }
 
 .project-item h4 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     margin-top: 2rem;
     margin-bottom: 1rem;
