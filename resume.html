@@ -165,7 +165,7 @@
         tencent: "Tencent CV Lab (2021) — Software Engineer Intern, Shenzhen\n\n• Engineered CV inference pipeline for ultra-small instrument defect detection (80→25ms latency, 40 FPS on edge)\n• Led MLOps deployment and A/B validation ensuring >95% F1 score\n• Implemented validation framework that reduced post-deployment model drift by 40%",
         cmu: "Carnegie Mellon University (2019 – 2021)\nMaster of Science in Information Technology, Pittsburgh, PA\n\nFocus on Software Engineering, Data Analytics, and Cloud Computing.",
         qmul: "Queen Mary University of London & BUPT Joint Program (2015 – 2019)\nBachelor of Engineering in Intelligent Science and Technology\nLondon, UK & Beijing, China\n\nStrong foundation in computer science, intelligent systems, cryptography, and privacy.",
-        ai: "AI/ML & Agent Systems:\n\n• LLM Integration (OpenAI, Anthropic APIs)\n• AI Agent Architectures & Multi-agent Systems\n• Prompt Engineering & RAG Systems (Qdrant, Voyage, Exa)\n• Knowledge Graphs (Neo4j)\n• Model Evaluation & Testing Frameworks\n• ML Pipeline Development & Deployment\n• Fine-tuning: SFT & Reinforcement Learning (PPO)",
+        ai: "AI/ML & Agent Systems:\n\n• LLM Integration (OpenAI, Anthropic APIs)\n• Agentic pipelines & tool-use architectures\n• Declarative strategy specs with sandboxed execution\n• Model routing across LightGBM / DL / RL policies\n• Factor mining & research copilots with human-in-the-loop review\n• ML pipeline development and deployment",
         quant: "Quantitative Finance:\n\n• Portfolio Optimization & Risk Management\n• Options Pricing (Black-Scholes, Greeks)\n• Factor Models & VaR Analysis\n• Market Microstructure & Execution\n• Statistical Modeling & Backtesting\n• Delta-neutral hedging with RL (1.8 Sharpe, <5% max drawdown)",
         pm: "Product Management:\n\n• Product Strategy & Roadmap Development\n• Stakeholder Management & Communication\n• Metrics Definition & Analytics (KPIs, A/B Testing)\n• Cross-functional Team Leadership\n• Technical Requirements & Documentation\n• Agile/Scrum Methodologies\n• GPU pricing, billing logic, and go-to-market",
         programming: "Programming & Data:\n\n• Python: pandas, numpy, scikit-learn, PyTorch\n• SQL: data analysis, query optimization\n• API Development & Integration (RESTful, gRPC)\n• Git, Docker, CI/CD pipelines\n• Data visualization, Jupyter notebooks\n• Languages: Chinese (Native), English (Fluent)",
@@ -211,11 +211,11 @@
         },
         {
             keywords: ['ai', 'agent', 'agentic', 'multi-agent', 'tool calling', 'llm agent'],
-            answer: "Yan's AI agent experience:\n\n• Built Financial Deep Research Agent at Zen Trading — tool-calling system with Postgres, Neo4j, Qdrant+Voyage, Redis, Exa\n• Difficulty-tiered evaluation harness for tool selection, entity grounding, numeric accuracy, hallucination prevention\n• Led AI Agent platform from PRD to GA in 10 weeks at FedML — 500+ agent deployments in Q1\n• Expertise in LLM integration (OpenAI, Anthropic), prompt engineering, RAG systems"
+            answer: "Yan's AI agent experience:\n\n• Shipped Zentos CLI at Zen Trading — end-to-end agentic pipeline compiling natural-language research intent into declarative StrategySpec, with Docker-sandboxed execution, validation gating, and live-broker deployment\n• LLM agents as a productivity layer over a deterministic ML/DL stack: model routing (LightGBM/DL/RL), factor mining with human-in-the-loop review, and research assistance (10-K summarization, literature retrieval, post-mortems)\n• Previously led the AI Agent platform from PRD to GA at FedML\n• Expertise in LLM integration (OpenAI, Anthropic), prompt engineering, RAG, and tool-use architectures"
         },
         {
             keywords: ['quant', 'finance', 'trading', 'portfolio', 'options', 'hedging', 'greek', 'black-scholes', 'sharpe'],
-            answer: "Yan's quantitative finance work at Zen Trading:\n\n• HedgeLLM: fine-tuned via SFT/RL for delta-neutral hedging across 10M+ daily data points — 85% accuracy\n• PPO-based RL: 1.8 Sharpe ratio, <5% max drawdown over 5-year backtest\n• 95%+ days within ±10 delta of neutral target\n• Skills: portfolio optimization, options pricing (Black-Scholes, Greeks), factor models, VaR, backtesting"
+            answer: "Yan's quantitative finance work at Zen Trading:\n\n• Built core research stack around LightGBM signal fusion over a multi-factor alpha library (value, momentum, quality, low-vol, cross-sectional microstructure) with RL policies for allocation and execution\n• Cross-validated strategies on both vectorbt and QuantConnect Lean to enforce backtest rigor and eliminate framework-specific artifacts\n• Evaluates factors via IC, decile spreads, and turnover-adjusted Sharpe\n• Skills: portfolio optimization, options pricing (Black-Scholes, Greeks), factor models, VaR, backtesting"
         },
         {
             keywords: ['product', 'management', 'pm', 'product manager', 'roadmap', 'strategy'],
@@ -227,15 +227,15 @@
         },
         {
             keywords: ['rag', 'retrieval', 'vector', 'embedding', 'qdrant', 'voyage'],
-            answer: "Yan built RAG systems at Zen Trading using Qdrant + Voyage AI finance embeddings (voyage-finance-2). The Financial Deep Research Agent integrates semantic retrieval, Redis caching, and Exa web intelligence for real-time news and filings."
+            answer: "Retrieval work at Zen Trading powers the research-assistance agents — 10-K and earnings-transcript summarization, related-literature retrieval, and strategy post-mortem drafting — grounded in auditable sources so human-in-the-loop review stays effective."
         },
         {
             keywords: ['neo4j', 'graph', 'knowledge graph', 'supply chain'],
-            answer: "Yan uses Neo4j at Zen Trading for supply chain graph analysis — mapping company networks, supplier-customer relationships, and sector dependencies for graph-based investment reasoning."
+            answer: "Graph-based modeling isn't core to the current Zen Trading stack, which focuses on factor libraries, ML/RL policies, and agentic pipelines. Yan has prior exposure to knowledge-graph and supply-chain modeling but doesn't use Neo4j in day-to-day work."
         },
         {
             keywords: ['reinforcement', 'rl', 'ppo', 'reward', 'sft', 'fine-tun'],
-            answer: "Yan's RL & fine-tuning work at Zen Trading:\n\n• HedgeLLM: SFT then RL for delta-neutral hedging\n• PPO with multi-component reward: P&L, delta penalty, transaction costs\n• Results: 1.8 Sharpe, <5% max drawdown, 95%+ days within ±10 delta\n• Greeks computed via Black-Scholes across 10M+ daily data points"
+            answer: "Yan's RL & ML work at Zen Trading:\n\n• LightGBM signal fusion as the research-stack backbone over a multi-factor alpha library\n• RL policies for dynamic allocation and execution, validated on vectorbt and QuantConnect Lean\n• Model routing between LightGBM/DL/RL policies under regime classifiers; factor mining with human-in-the-loop review\n• Foundation in reinforcement learning, supervised ML, and quantitative evaluation"
         },
         {
             keywords: ['mlops', 'deploy', 'devops', 'docker', 'ci/cd', 'infrastructure'],

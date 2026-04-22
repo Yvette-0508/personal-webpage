@@ -836,6 +836,10 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
+.rc-cards-skills .rc-card-wrapper.rc-card-open {
+    grid-column: 1 / -1;
+}
+
 
 .rc-card {
     display: block;
