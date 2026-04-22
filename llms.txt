@@ -1,0 +1,43 @@
+# Yan Pan — Founder & Applied AI Engineer
+
+> Yan Pan (Yvette) is Founder & Applied AI Engineer at Zen Trading in San Francisco, building an agentic quantamental research and trading platform. Current work combines multi-factor ML/RL strategies, the Zentos CLI (an end-to-end agentic pipeline for external quant contributors), and LLM agents scoped to orchestration — model routing, factor mining, and research assistance — rather than autonomous trading. The underlying thesis is that agentic systems work best as a rigor-preserving layer over deterministic models, not a replacement for them.
+
+## Main pages
+
+- [About](https://yanpan.dev/index.html): Current focus at Zen Trading, interests and activities (incl. agentic math-education incubation), and condensed experience summary.
+- [Resume](https://yanpan.dev/resume.html): Interactive resume — experience at Zen Trading, FedML / TensorOpera AI, Alibaba Cloud PAI, Tencent CV Lab; education at Carnegie Mellon University and Queen Mary University of London / Beijing University of Posts and Telecommunications; accelerators and sponsorships (SCALE GMI, NVIDIA Inception, Microsoft Azure, Lambda Labs, Fireworks AI, DigitalOcean); with a chatbot for natural-language Q&A.
+- [Portfolio](https://yanpan.dev/portfolio.html): Featured project — multi-factor ML/RL strategy research, Zentos CLI agentic pipeline, and LLM agents in the ML/DL strategy stack. Previous work at TensorOpera AI (MLOps / Federated Learning SDK), Alibaba Cloud PAI (ML Platform / Privacy Computing), and Tencent CV Lab (CV Defect Detection Engineering).
+
+## Writing
+
+- [Human Written](https://yanpan.dev/blog.html): Index of personal essays and technical posts.
+- [What I Define as a Successful Quantamental Agent](https://yanpan.dev/blog-successful-quantamental-agent.html): Working definition of what "successful" looks like for an agentic quantamental system.
+- [Finding That Star in All the Noise](https://yanpan.dev/blog-finding-star-in-noise.html): On signal versus noise in the current AI landscape.
+- [Human Written Matters](https://yanpan.dev/blog-human-written-matters.html): Why human-authored writing still matters in the LLM era.
+- [Why Individual Investors Need Quantamental Tools](https://yanpan.dev/blog-why-individual-need-quantamental.html): The case for bringing quantamental tooling to individual investors.
+- [Between Jobs, Between Homes](https://yanpan.dev/blog-between-jobs-between-homes.html): Personal essay on transitions.
+- [Community Reflections on LLM-Powered Financial Research Tools](https://yanpan.dev/blog-community-reflections-llm-finance.html): Notes from conversations with practitioners building LLM-powered finance tools.
+- [From Open Source to Product: Monetizing a Mobile End Agent (global-autoglm)](https://yanpan.dev/blog-global-autoglm-monetization.html): Reflections on productizing open-source agent infrastructure.
+- [Fine-tuned Models for Portfolio Hedging with Options](https://yanpan.dev/blog-options-hedging-finetuned.html): Technical post on SFT/RL fine-tuning for delta-neutral hedging with options.
+- [Autoresearch and Quant Research](https://yanpan.dev/blog-autoresearch-quant-research.html): On automated research workflows in quantitative finance.
+- [Side Project: The 32ms Barrier — Why Real-Time Multimodal AI is Still Failing](https://yanpan.dev/blog-voice-driven-realtime-video.html): Latency analysis of real-time voice-to-video pipelines.
+- [Building a Financial Research Agent: Graph + RAG + Continuous Evaluation](https://yanpan.dev/blog-agentic-rebalancing.html): Architecture post on a tool-calling research agent (Postgres, Neo4j, Qdrant+Voyage, Redis, Exa) with a difficulty-tiered evaluation harness.
+
+## Reading
+
+- [Recent Reading](https://yanpan.dev/reading.html): Currently reading list — books across finance, economics, history, and technology.
+
+## Optional
+
+- [Data Shop](https://yanpan.dev/shop.html): Premium datasets for research, analysis, and AI/ML applications.
+
+## Key facts
+
+- **Current role**: Founder & Applied AI Engineer at Zen Trading (Oct 2024 – Present), San Francisco
+- **Focus areas**: agentic quantamental research and trading platforms, multi-factor ML/RL strategy research, LLM agent orchestration, point-in-time safety, dual-framework backtest validation (vectorbt and QuantConnect Lean), declarative strategy specifications, sandboxed execution
+- **Previous experience**: Founding Product Manager at FedML / TensorOpera AI (2022–2024), AI Product Manager at Alibaba Cloud PAI (2021–2022), Software Engineer Intern at Tencent CV Lab (2021)
+- **Education**: MS in Information Technology, Carnegie Mellon University (2019–2022); BEng in Intelligent Science and Technology, Queen Mary University of London / Beijing University of Posts and Telecommunications Joint Program (2015–2019)
+- **Contact**: yvette@zentraders.xyz
+- **GitHub**: https://github.com/Yvette-0508
+- **LinkedIn**: https://www.linkedin.com/in/yvette-pan-488247173/
+- **Based in**: San Francisco Bay Area, California
