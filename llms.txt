@@ -14,14 +14,8 @@
 - [How I Overcame My Fear of Understanding Math Formulas When Reading Papers](https://yanpan.dev/blog-overcome-fear-math-formulas.html): Personal essay on getting past math anxiety when reading research papers.
 - [Finding That Star in All the Noise](https://yanpan.dev/blog-finding-star-in-noise.html): On signal versus noise in the current AI landscape.
 - [Human Written Matters](https://yanpan.dev/blog-human-written-matters.html): Why human-authored writing still matters in the LLM era.
-- [Why Individual Investors Need Quantamental Tools](https://yanpan.dev/blog-why-individual-need-quantamental.html): The case for bringing quantamental tooling to individual investors.
 - [Between Jobs, Between Homes](https://yanpan.dev/blog-between-jobs-between-homes.html): Personal essay on transitions.
-- [Community Reflections on LLM-Powered Financial Research Tools](https://yanpan.dev/blog-community-reflections-llm-finance.html): Notes from conversations with practitioners building LLM-powered finance tools.
-- [From Open Source to Product: Monetizing a Mobile End Agent (global-autoglm)](https://yanpan.dev/blog-global-autoglm-monetization.html): Reflections on productizing open-source agent infrastructure.
-- [Fine-tuned Models for Portfolio Hedging with Options](https://yanpan.dev/blog-options-hedging-finetuned.html): Technical post on SFT/RL fine-tuning for delta-neutral hedging with options.
 - [Autoresearch and Quant Research](https://yanpan.dev/blog-autoresearch-quant-research.html): On automated research workflows in quantitative finance.
-- [Side Project: The 32ms Barrier — Why Real-Time Multimodal AI is Still Failing](https://yanpan.dev/blog-voice-driven-realtime-video.html): Latency analysis of real-time voice-to-video pipelines.
-- [Building a Financial Research Agent: Graph + RAG + Continuous Evaluation](https://yanpan.dev/blog-agentic-rebalancing.html): Architecture post on a tool-calling research agent (Postgres, Neo4j, Qdrant+Voyage, Redis, Exa) with a difficulty-tiered evaluation harness.
 
 ## Reading
 

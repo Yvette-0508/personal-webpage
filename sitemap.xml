@@ -46,42 +46,12 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yanpan.dev/blog-why-individual-need-quantamental.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://yanpan.dev/blog-between-jobs-between-homes.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://yanpan.dev/blog-community-reflections-llm-finance.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yanpan.dev/blog-global-autoglm-monetization.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yanpan.dev/blog-options-hedging-finetuned.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://yanpan.dev/blog-autoresearch-quant-research.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yanpan.dev/blog-voice-driven-realtime-video.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://yanpan.dev/blog-agentic-rebalancing.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
