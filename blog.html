@@ -113,7 +113,61 @@
                 <a href="blog-human-written-matters.html" class="read-more">Read More →</a>
             </article>
         </div>
+
+        <nav class="pagination" aria-label="Blog pagination"></nav>
     </main>
+
+    <script>
+        (function () {
+            const PAGE_SIZE = 3;
+            const posts = Array.from(document.querySelectorAll('.blog-posts .blog-post'));
+            const nav = document.querySelector('.pagination');
+            if (!nav || posts.length <= PAGE_SIZE) return;
+
+            const totalPages = Math.ceil(posts.length / PAGE_SIZE);
+
+            function render(page) {
+                posts.forEach((el, i) => {
+                    const inPage = i >= (page - 1) * PAGE_SIZE && i < page * PAGE_SIZE;
+                    el.style.display = inPage ? '' : 'none';
+                });
+                nav.innerHTML = '';
+
+                const prev = document.createElement('button');
+                prev.className = 'pagination-btn';
+                prev.textContent = '← Prev';
+                prev.disabled = page === 1;
+                prev.addEventListener('click', () => go(page - 1));
+                nav.appendChild(prev);
+
+                for (let p = 1; p <= totalPages; p++) {
+                    const b = document.createElement('button');
+                    b.className = 'pagination-btn' + (p === page ? ' is-active' : '');
+                    b.textContent = p;
+                    b.addEventListener('click', () => go(p));
+                    nav.appendChild(b);
+                }
+
+                const next = document.createElement('button');
+                next.className = 'pagination-btn';
+                next.textContent = 'Next →';
+                next.disabled = page === totalPages;
+                next.addEventListener('click', () => go(page + 1));
+                nav.appendChild(next);
+            }
+
+            function go(page) {
+                const clamped = Math.max(1, Math.min(totalPages, page));
+                history.replaceState(null, '', '#page=' + clamped);
+                render(clamped);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            const match = window.location.hash.match(/page=(\d+)/);
+            const initial = match ? parseInt(match[1], 10) : 1;
+            render(Math.max(1, Math.min(totalPages, initial)));
+        })();
+    </script>
 
     <footer class="footer">
         <div class="footer-content">
