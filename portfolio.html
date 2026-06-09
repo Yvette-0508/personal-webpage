@@ -12,7 +12,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Yan Pan</title>
-    <meta name="description" content="Featured project: multi-factor ML/RL strategy research, Zentos CLI agentic pipeline, and LLM agents for model routing and factor mining. Previous MLOps and privacy-computing work at TensorOpera AI, Alibaba Cloud PAI, and Tencent CV Lab.">
+    <meta name="description" content="Featured project: agentic quantamental platform at Zen Trading — multi-hop reasoning equity research, a productionized FinRL-X stack (XGBoost selection + TD3 deep-RL allocation), and Tradfi-Agent for autonomous perpetual-futures trading. Previous MLOps and privacy-computing work at TensorOpera AI, Alibaba Cloud PAI, and Tencent CV Lab.">
     <link rel="canonical" href="https://yanpan.dev/portfolio.html">
     <link rel="stylesheet" href="styles.css">
 
@@ -20,13 +20,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yanpan.dev/portfolio.html">
     <meta property="og:title" content="Portfolio — Yan Pan">
-    <meta property="og:description" content="Multi-factor ML/RL strategy research, Zentos CLI agentic pipeline, and LLM agent orchestration at Zen Trading. Plus previous MLOps, federated learning, and CV engineering work.">
+    <meta property="og:description" content="Agentic quantamental platform at Zen Trading — multi-hop reasoning equity research, a productionized FinRL-X stack (XGBoost selection + TD3 deep-RL allocation), and Tradfi-Agent for autonomous perpetual-futures trading. Plus previous MLOps, federated learning, and CV engineering work.">
     <meta property="og:image" content="https://yanpan.dev/images/console-overview.webp">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Portfolio — Yan Pan">
-    <meta name="twitter:description" content="Multi-factor ML/RL strategy research, Zentos CLI agentic pipeline, and LLM agent orchestration at Zen Trading.">
+    <meta name="twitter:description" content="Agentic quantamental platform at Zen Trading — multi-hop reasoning equity research, a productionized FinRL-X stack (XGBoost selection + TD3 deep-RL allocation), and Tradfi-Agent for autonomous perpetual-futures trading.">
     <meta name="twitter:image" content="https://yanpan.dev/images/console-overview.webp">
 </head>
 <body>
@@ -48,54 +48,54 @@
 
         <section class="portfolio-section">
             <div class="project-featured">
-                <h2 class="project-title">Multi-Factor ML/RL Strategy, Agentic Research & Orchestration Pipeline</h2>
+                <h2 class="project-title">Agentic Quantamental Research & Trading Platform</h2>
                 <div class="project-meta">Zen Trading • Oct 2024 - Present</div>
             
 
                 <div class="portfolio-banner">
                     <a href="https://zentraders.xyz" target="_blank" rel="noopener noreferrer">
-                        <img src="images/console-overview.webp" alt="Zentos Console Overview: Portfolio, Strategies, Backtests, and Deployments Dashboard" class="banner-image">
+                        <img src="images/console-overview.webp" alt="Zen Trading platform console: portfolio, strategies, backtests, and deployments dashboard" class="banner-image">
                     </a>
                 </div>
 
                 <h3 class="project-subtitle"><strong>Core Components</strong></h3>
 
                 <div class="project-component">
-                    <h4>Multi-Factor, ML & RL Strategy Research</h4>
+                    <h4>Agentic Equity Research — Multi-Hop Reasoning</h4>
                     <p>
-                        LightGBM-based signal fusion over a multi-factor alpha library (value, momentum, quality, low-vol, cross-sectional microstructure), with RL policies for allocation and execution. Factors are scored by IC, decile spreads, and turnover-adjusted Sharpe. Every strategy is cross-validated on both <code>vectorbt</code> and QuantConnect <code>Lean</code> to eliminate framework-specific artifacts.
+                        An agentic equity-research platform (FastAPI + Next.js) where an LLM agent generates per-company <strong>multi-hop reasoning</strong> theses — tracing how one company's situation propagates across its value chain, upstream to suppliers and downstream to customers — grounded on point-in-time regulatory financials and an editable value-chain context. Every generation is routed through an observability and audit layer (Langfuse plus a local audit log) for full traceability and human review.
                     </p>
                     <div class="tech-highlights">
-                        <span class="tech-tag">LightGBM</span>
-                        <span class="tech-tag">Multi-Factor Alpha</span>
-                        <span class="tech-tag">Reinforcement Learning</span>
-                        <span class="tech-tag">vectorbt / Lean</span>
+                        <span class="tech-tag">Multi-Hop Reasoning</span>
+                        <span class="tech-tag">LLM Agents</span>
+                        <span class="tech-tag">FastAPI / Next.js</span>
+                        <span class="tech-tag">Observability / Audit</span>
                     </div>
                 </div>
 
                 <div class="project-component">
-                    <h4>Zentos CLI — End-to-End Agentic Pipeline</h4>
+                    <h4>FinRL-X — XGBoost Selection + TD3 Allocation, Productionized</h4>
                     <p>
-                        Shipped <strong>Zentos CLI</strong>, an end-to-end agentic pipeline that lets external quantitative researchers and developers submit strategies to the platform without touching infrastructure. Natural-language research intent is compiled into declarative <code>StrategySpec</code> objects; the CLI orchestrates data staging, sandboxed Python execution (Docker, no network, read-only fact copy), the full validation gate, and deployment to live brokers. The goal is to compress the research-to-production loop from weeks to hours while preserving point-in-time safety, reproducibility, and auditability at every step.
+                        Extended and productionized <strong>FinRL-X</strong> (the open-source AI4Finance weight-centric quant framework), centering two strategies of our own: an <strong>XGBoost</strong> fundamental stock-selection model (quarterly, point-in-time, no-lookahead) and a <strong>TD3</strong> deep-RL portfolio allocator, both emitting a shared target-weight vector. Built the deployment layer around them — live/paper execution on Alpaca (multi-account, pre-trade risk checks), a multi-source data pipeline (Yahoo / FMP / WRDS) with SQLite caching, and a one-command Dockerized path carrying identical weights from backtest to live. The ensemble was deployed to Alpaca paper trading at a 1.96 Sharpe.
                     </p>
                     <div class="tech-highlights">
-                        <span class="tech-tag">Zentos CLI</span>
-                        <span class="tech-tag">StrategySpec DSL</span>
-                        <span class="tech-tag">Sandboxed Execution</span>
-                        <span class="tech-tag">Strategy-as-Code</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">TD3 (Deep RL)</span>
+                        <span class="tech-tag">FinRL-X</span>
+                        <span class="tech-tag">Alpaca Execution</span>
                     </div>
                 </div>
 
                 <div class="project-component">
-                    <h4>LLM Agents in the ML/DL Strategy Stack</h4>
+                    <h4>Tradfi-Agent — Autonomous Perpetual-Futures Trading</h4>
                     <p>
-                        Integrated LLM agents as a productivity layer on top of an otherwise deterministic ML/DL strategy platform, scoped to three production use cases: <em>(1) model routing</em> — selecting between LightGBM, deep-learning, and RL policies based on regime classifiers and factor exposures; <em>(2) factor mining</em> — proposing, implementing, and backtesting candidate alpha formulas under human-in-the-loop review; <em>(3) research assistance</em> — summarizing 10-K and earnings transcripts, surfacing related literature, and drafting strategy post-mortems. Agents orchestrate and propose — all signals, weights, and orders remain under deterministic control.
+                        An autonomous trading agent for tokenized equities and ETFs on Binance USD-margined <strong>perpetual futures</strong>. A two-stage multi-hop reasoning loop first infers a macro regime from index ETFs, then fans out five parallel sector-level LLM calls conditioned on that regime to emit per-token long/short/hold decisions with confidence, volatility-aware take-profit/stop-loss, and funding-rate-adjusted entry thresholds. Orders run through a risk gate (exposure caps, spread guards, position sizing) and three-layer server-side exit protection over async REST and dual market/account WebSocket streams.
                     </p>
                     <div class="tech-highlights">
-                        <span class="tech-tag">Model Routing</span>
-                        <span class="tech-tag">Factor Discovery</span>
-                        <span class="tech-tag">Research Copilot</span>
-                        <span class="tech-tag">Human-in-the-Loop</span>
+                        <span class="tech-tag">Perpetual Futures</span>
+                        <span class="tech-tag">Multi-Hop Reasoning</span>
+                        <span class="tech-tag">Risk Gate</span>
+                        <span class="tech-tag">WebSocket Streaming</span>
                     </div>
                 </div>
             </div>
